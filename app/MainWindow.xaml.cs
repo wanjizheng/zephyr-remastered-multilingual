@@ -176,7 +176,7 @@ public partial class MainWindow : Window
   MainHeading.Text=english?"Return to a familiar world":hant?"中文，回到熟悉的世界":"中文，回到熟悉的世界";
   MainSubheading.Text=english?"Select the game folder to install the patch.":hant?"選擇遊戲目錄，即可安裝漢化。":"选择游戏目录，即可安装汉化。";
   SidebarEdition.Text=english?"Remastered localization patch":hant?"重製版多語言翻譯":"重制版多语言翻译";
-  VersionBadge.Text=english?"v0.4.1 release":hant?"v0.4.1 正式版":"v0.4.1 正式版";
+  VersionBadge.Text=english?"v0.4.2 local preview":hant?"v0.4.2 本地測試版":"v0.4.2 本地测试版";
   GameDirectoryLabel.Text=english?"Game folder":hant?"遊戲目錄":"游戏目录";
   LanguageIconLabel.Text=english?"Install language":hant?"安裝語言":"安装语言";
   GamePath.ToolTip=english?"Select the folder containing ZephyrRemastered.exe":hant?"選擇包含 ZephyrRemastered.exe 的資料夾":"选择包含 ZephyrRemastered.exe 的文件夹";
@@ -187,7 +187,7 @@ public partial class MainWindow : Window
   FeedbackButton.Content=english?"Feedback":hant?"問題回報":"问题反馈";
   StoreButton.Content=english?"Support the official game":hant?"支持正版":"支持正版";
   RecoverButton.Content=english?"Repair interrupted install":hant?"修復中斷的安裝":"修复中断的安装";
-  FooterVersion.Text=english?"v0.4.1 · Unofficial localization tool":hant?"v0.4.1 · 非官方漢化工具":"v0.4.1 · 非官方汉化工具";
+  FooterVersion.Text=english?"v0.4.2 local preview · Unofficial localization tool":hant?"v0.4.2 本地測試版 · 非官方漢化工具":"v0.4.2 本地测试版 · 非官方汉化工具";
   UpdateInstallButtonText();
   if(lastState is JsonElement current)ShowState(current);
   else{StateTitle.Text=L("等待选择游戏目录");StateDetail.Text=L("请选择包含 ZephyrRemastered.exe 的文件夹。");}

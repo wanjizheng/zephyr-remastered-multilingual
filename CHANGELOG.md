@@ -1,5 +1,15 @@
 # 更新日志 / Changelog
 
+## [Unreleased]
+
+### 中文
+
+- 修正希尔弗告别船员时的“傻老幺”台词：她是在拜托其他船员照顾刚才说话的年轻同伴。重写了她败给西拉诺后的追随承诺，以及再次提起承诺时的整句台词，明确表达“追随至死不渝”。已同步简体中文、繁體中文和 English。
+
+### English
+
+- Clarified Silver's farewell request: she asks the other crew members to look after the youngest member who had just spoken. Rewrote her vow after losing to Cyrano and her later reaffirmation to convey a lifelong commitment to follow him. Updated in Simplified Chinese, Traditional Chinese, and English.
+
 ## [0.4.1] - 2026-09-21
 
 ### 中文
