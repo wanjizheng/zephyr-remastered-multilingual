@@ -4,10 +4,12 @@
 
 ### 中文
 
+- 修复希尔弗台词中“吾”“渝”的字形异常：简体与繁体对话字体原先仍引用旧的低分辨率字形，现分别按各自原有的朱雀仿宋渲染模式重新烘焙。对照“君”核验了像素和字形参数，并完成两种语言的全部 19 项资源重建。
 - 修正希尔弗告别船员时的“傻老幺”台词：她是在拜托其他船员照顾刚才说话的年轻同伴。重写了她败给西拉诺后的追随承诺，以及再次提起承诺时的整句台词，明确表达“追随至死不渝”。已同步简体中文、繁體中文和 English。
 
 ### English
 
+- Fixed the mismatched glyphs for “吾” and “渝” in Silver's dialogue. The Simplified and Traditional Chinese dialogue fonts still referenced low-resolution legacy glyphs; both now use glyphs baked from Zhuque Fangsong with their respective rendering settings. Verified pixels and metrics against “君” and rebuilt all 19 resources for each locale.
 - Clarified Silver's farewell request: she asks the other crew members to look after the youngest member who had just spoken. Rewrote her vow after losing to Cyrano and her later reaffirmation to convey a lifelong commitment to follow him. Updated in Simplified Chinese, Traditional Chinese, and English.
 
 ## [0.4.1] - 2026-09-21
