@@ -19,7 +19,7 @@
 
 **The Rhapsody of Zephyr Remastered — unofficial, free localization for Simplified Chinese, Traditional Chinese, and English.** The patcher modifies only a player's legally installed Steam copy on their own computer. It does not provide the game, upload game files, or require a GitHub account.
 
-1. Download **`Zephyr-Chinese-Patcher-0.4.0.zip`** from [GitHub Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.0). Download the ZIP asset, not GitHub's “Source code” archive.
+1. Download **`Zephyr-Chinese-Patcher-0.4.1.zip`** from [GitHub Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1). Download the ZIP asset, not GitHub's “Source code” archive.
 2. Extract the whole ZIP and run `ZephyrChinesePatcher.exe` on Windows 10 or 11 (x64). Keep the `tools`, `payload`, and `licenses` folders beside the program. No separate .NET, Python, or Unity installation is needed.
 3. Save and fully exit the game. Choose **EN** at the top right of the patcher, select the folder containing `ZephyrRemastered.exe`, then install. **CN** installs Simplified Chinese; **TW** installs Traditional Chinese. The same buttons change the patcher's interface language.
 4. To change languages, select another button and install again. To return to the original game, use the patcher's **Steam verification** button. An interrupted or failed installation can be rolled back automatically; saved games are not changed.
@@ -34,7 +34,7 @@ This is an independent fan project, unaffiliated with the developer or publisher
 
 **《西風狂詩曲 重製版》免費、非官方的簡體中文、繁體中文及英文翻譯補丁。** 安裝工具只會在玩家自己的電腦上修改合法安裝的 Steam 遊戲檔案；不提供遊戲本體，也不會上傳遊戲資源。
 
-1. 從 [GitHub Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.0) 下載 **`Zephyr-Chinese-Patcher-0.4.0.zip`**。請下載 ZIP 安裝包，不要下載 GitHub 自動產生的「Source code」。
+1. 從 [GitHub Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1) 下載 **`Zephyr-Chinese-Patcher-0.4.1.zip`**。請下載 ZIP 安裝包，不要下載 GitHub 自動產生的「Source code」。
 2. 完整解壓縮，在 Windows 10／11 x64 執行 `ZephyrChinesePatcher.exe`。請保留旁邊的 `tools`、`payload` 和 `licenses` 資料夾；不必另外安裝 .NET、Python 或 Unity。
 3. 儲存進度並完全關閉遊戲。在工具右上角選 **TW**，選擇包含 `ZephyrRemastered.exe` 的遊戲資料夾後安裝。**CN** 為簡體中文，**EN** 為英文；按鈕也會切換安裝工具本身的介面語言。
 4. 要切換語言，選擇另一個按鈕並重新安裝。要回復原版，請按工具內的 **Steam 驗證**按鈕。安裝失敗時工具會自動回滾；不會修改存檔。
@@ -77,7 +77,7 @@ This is an independent fan project, unaffiliated with the developer or publisher
 
 | 下载 | 安装 | 恢复 |
 | :--- | :--- | :--- |
-| 在 [Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.0) 下载程序 ZIP | 退出游戏，选 CN／TW／EN 和游戏目录，再点击安装 | 退出游戏，用工具中的 Steam 验证入口恢复原版 |
+| 在 [Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1) 下载程序 ZIP | 退出游戏，选 CN／TW／EN 和游戏目录，再点击安装 | 退出游戏，用工具中的 Steam 验证入口恢复原版 |
 | 完整解压，不要只取出 EXE | 等待校验完成，再自行启动游戏 | Steam 完成验证后由工具重新检测，不改动存档 |
 
 1. 下载 `Zephyr-Chinese-Patcher-*.zip`，**不要把 Source code 当作安装包**。
@@ -157,7 +157,7 @@ This is an independent fan project, unaffiliated with the developer or publisher
 
 ## 当前版本与内容范围
 
-### 当前正式版本：v0.4.0
+### 当前正式版本：v0.4.1
 
 - 新增 **繁體中文** 与 **English**，安装器右上角的 CN／TW／EN 同时控制工具界面与游戏翻译。**繁体版仅将简体字转换为繁体字，没有针对繁体口语习惯优化。英文版因时间有限，由 GPT 根据已确定人物关系和其他信息的简体译文直接进行 AI 翻译；英文的字体和界面没有做全面优化。**有问题请及时反馈。
 - 保留简体版已有修改，并修复三语言共享基础攻击技能被错误冠以角色名的问题；英文基础技能名在战斗菜单中保持可区分。
@@ -165,11 +165,11 @@ This is an independent fan project, unaffiliated with the developer or publisher
 - 缩短安装临时及回滚路径，降低 Windows 10 默认路径长度限制下的安装失败风险。移除手动本地恢复，恢复原版请使用 Steam 验证；安装失败自动回滚仍然保留。
 - 完整变更见 [中英双语 CHANGELOG](CHANGELOG.md)。从旧版升级时请完整解压新包，避免混用旧引擎或旧语言数据。
 
-下载 [v0.4.0 正式版](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.0)。
+下载 [v0.4.1 正式版](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1)。
 
 | 项目 | 说明 |
 | :--- | :--- |
-| 工具版本 | **v0.4.0** · 当前正式版 |
+| 工具版本 | **v0.4.1** · 当前正式版 |
 | 游戏语言 | 简体中文、繁體中文、English；不改变游戏本身的官方语言支持 |
 | 支持游戏 | Steam App `5099430`，已核验 Build `25418345` 的精确资源版本 |
 | 系统 | Windows 10 / 11 x64；自动化开发验证环境为 Windows 11 |

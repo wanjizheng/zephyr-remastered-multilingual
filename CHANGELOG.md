@@ -1,5 +1,15 @@
 # 更新日志 / Changelog
 
+## [0.4.1] - 2026-09-21
+
+### 中文
+
+- 修复英文版地图探索中 F9 自动推进快捷键提示在固定胶囊内换行、溢出的问题。提示改为简短的 **Auto**，功能不变。
+
+### English
+
+- Fixed the English F9 auto-advance shortcut label wrapping outside its fixed pill during field exploration. Its label is now the shorter **Auto**; functionality is unchanged.
+
 ## [0.4.0] - 2026-09-21
 
 ### 中文
@@ -50,6 +60,7 @@
 - First stable release: Simplified Chinese story and UI localization, Zhuque Fangsong font, an original-file backup, and signed update checks.
 - Player-tested installation and restore; improved path display, usage instructions, and character-name cross-references.
 
+[0.4.1]: https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1
 [0.4.0]: https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.0
 [0.2.0]: https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.2.0
 [0.1.0]: https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.1.0
