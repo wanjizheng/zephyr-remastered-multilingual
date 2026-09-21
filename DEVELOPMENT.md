@@ -13,21 +13,21 @@ pwsh -File scripts/build.ps1 -OutputDirectory C:\Build\zephyr-release-001
 
 ## 测试
 
-`tests/integration.py --fixture <原版测试副本> --work <新空目录>` 会再复制一份资源进行安装、恢复、故障和路径保护测试。fixture 必须包含受支持的 EXE、18 个目标文件和两项 `.resS` 依赖；官方文件只能由维护者本地提供，不能提交或上传到 CI。
+`tests/integration.py --fixture <原版测试副本> --work <新空目录>` 会再复制一份资源进行安装、恢复、故障和路径保护测试。fixture 必须包含受支持的 EXE、19 个目标文件和所需 `.resS` 依赖；官方文件只能由维护者本地提供，不能提交或上传到 CI。
 
-测试内仅对其新建副本跳过进程占用检测，生产安装、恢复没有此开关。发行引擎支持只读 `verify --game <原版目录> --payload <payload目录>`，在工具工作区重建所有资源并检查精确输出哈希，不修改游戏。另应验证游戏运行时安装被拒绝、界面显示、签名校验、公开文件内容与包内哈希。
+测试内仅对其新建副本跳过进程占用检测，生产安装没有此开关。发行引擎支持只读 `verify --game <原版目录> --payload <payload目录>`，在工具工作区重建所有资源并检查精确输出哈希，不修改游戏。另应验证游戏运行时安装被拒绝、界面显示、签名校验、公开文件内容与包内哈希。
 
 ## 数据更新
 
-当前 `payload` 是经过核验的发行数据；`engine/trusted_payload.py` 固定这两个文件的 SHA-256。不能只改 pin 来跳过一次失败。
+当前 `payload/zh-Hans/`、`payload/zh-Hant/`、`payload/en/` 是经过核验的三语言发行数据；`engine/trusted_payload.py` 分别固定各语言两个文件的 SHA-256。不能只改 pin 来跳过一次失败。
 
 新译文版本需从维护者私有的原版／候选工作副本重新导出叶字段操作和许可字体字形块，重新检查所有原版哈希、最终输出 SHA、Unity 原生 CRC、catalog。将原版字形转换为本地复制引用，新字形须有逐块许可来源证明。不要把压缩 bundle 的粗粒度二进制差分当成“没有官方资源”的证明。内部游戏素材和生成工具工作区不应加入仓库。
 
-升级游戏支持版本需要独立重建和回归，不能修改旧版哈希冒充兼容。工具版本由 `app/Updates.cs`、项目版本与 UI 显示同步维护；资源数据版本由 `engine/main.py` 和 payload 对应维护。本地 0.2.0-local.1 含 19 个目标资源，原版 bitmap 字体采用原图本地复制与许可 alpha 字形叠加重建；所有输出必须与已接受候选逐字节相同。
+升级游戏支持版本需要独立重建和回归，不能修改旧版哈希冒充兼容。工具版本由 `app/Updates.cs`、项目版本与 UI 显示同步维护；资源数据版本由 `engine/main.py` 和 payload 对应维护。v0.4.0 各语言包含 19 个目标资源，原版 bitmap 字体采用原图本地复制与许可 alpha 字形叠加重建；所有输出必须与已接受候选逐字节相同。
 
-本地 0.2.0 使用 MaterialDesignThemes/Colors 5.3.2 与 Microsoft.Xaml.Behaviors.Wpf 1.1.77；WPF 依赖整合入自包含 EXE。Python 引擎采用 PyInstaller onefile，位于 tools/ZephyrPatchEngine.exe；首启解压有少量耗时。保留 payload、许可证及 tools 目录。不会把测试游戏、官方资源、签名私钥放入发行包。
+当前版本使用 MaterialDesignThemes/Colors 5.3.2 与 Microsoft.Xaml.Behaviors.Wpf 1.1.77；WPF 依赖整合入自包含 EXE。Python 引擎采用 PyInstaller onefile，位于 tools/ZephyrPatchEngine.exe；首启解压有少量耗时。保留 payload、许可证及 tools 目录。不会把测试游戏、官方资源、签名私钥放入发行包。
 
-恢复流程区分正常恢复与强制旧备份恢复。强制恢复必须传入 --confirm-old-backup；仅写入校验通过的备份记录，事务支持恢复缺失文件和失败回滚。游戏 EXE 与 Steam appmanifest 不由工具改写。Steam 恢复通过 steam://validate/5099430 交由 Steam 处理，工具不能预先宣称其完成。
+v0.4.0 仅通过 Steam 验证恢复原版，不提供手动旧备份或强制恢复入口。工具保留用于更新和切换语言的原版备份；安装事务支持中断后的自动回滚。游戏 EXE 与 Steam appmanifest 不由工具改写。Steam 恢复通过 steam://validate/5099430 交由 Steam 处理，工具不能预先宣称其完成。
 
 ## 发布签名
 

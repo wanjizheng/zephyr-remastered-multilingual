@@ -1,16 +1,27 @@
-name: 汉化或工具问题
-description: 报告漏译、显示问题或安装恢复错误
+name: 翻译或工具问题 / Translation or tool issue
+description: 报告简体、繁體、English 翻译、显示或安装问题 / Report translation, display, or installation issues
 body:
+  - type: dropdown
+    id: language
+    attributes:
+      label: 语言 / Language / 語言
+      options:
+        - 简体中文 / CN
+        - 繁體中文 / TW
+        - English / EN
+        - 安装工具 / Installer
+    validations:
+      required: true
   - type: input
     id: versions
     attributes:
-      label: 工具版本与游戏版本
+      label: 工具版本与游戏 Build / Patcher version and game build / 工具版本與遊戲 Build
     validations:
       required: true
   - type: textarea
     id: problem
     attributes:
-      label: 发生位置与复现步骤
-      description: 可附必要截图；请勿上传游戏资源、完整存档、账号信息或个人路径。
+      label: 发生位置与复现步骤 / Location and steps to reproduce / 發生位置與重現步驟
+      description: 可附必要截图。Please attach relevant screenshots. 請勿上傳完整遊戲資源、存檔、帳號資料或含個人路徑的整份日誌。 Do not upload full game files, saves, account details, or complete logs containing personal paths.
     validations:
       required: true

@@ -19,7 +19,8 @@ def rebuild(original,out,patch,payload,verify_output=True):
  for i,item in enumerate(patch['files']):
   src=safe(original,item['path']);dst=safe(out,item['path']);dst.parent.mkdir(parents=True,exist_ok=True)
   if sha(src)!=item['before_sha256']:raise ValueError('原版文件校验失败：'+Path(item['path']).name)
-  print('正在准备资源 %d/%d'%(i+1,len(patch['files'])),file=sys.stderr,flush=True)
+  progress_label={'zh-Hans':'正在准备资源','zh-Hant':'正在準備資源','en':'Preparing resources'}.get(patch.get('language'),'正在准备资源')
+  print('%s %d/%d'%(progress_label,i+1,len(patch['files'])),file=sys.stderr,flush=True)
   if item['kind']=='unity':
    env=UnityPy.load(str(src));objects={(o.assets_file.name,o.path_id):o for o in env.objects}
    for edit in item['changes']:

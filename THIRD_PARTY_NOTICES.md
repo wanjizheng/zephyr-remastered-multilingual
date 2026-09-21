@@ -4,6 +4,7 @@
 
 - **朱雀仿宋 / Zhuque Fangsong**，TrionesType / Zhejiang JadeFoci Technology Co. LTD，SIL Open Font License 1.1。来源：https://github.com/TrionesType/zhuque 。使用其独立生成的字形像素，未发布游戏原有图集。
 - **Noto Sans CJK SC / Noto Serif CJK SC**，相关版权与 SIL OFL 1.1 见 NotoSans / NotoSerif LICENSE。来源：https://github.com/notofonts/noto-cjk 。少量已有补齐字形保留。
+- **Source Sans 3 / Source Serif 4**，Adobe 及字体项目贡献者，SIL Open Font License 1.1。来源：https://github.com/adobe-fonts/source-sans 与 https://github.com/adobe-fonts/source-serif 。英文界面使用 Source Sans 3 字形，标题及已确认的剧情对话组件使用 Source Serif 4 字形；完整许可见 `licenses/SourceSans3-OFL.md` 与 `licenses/SourceSerif4-OFL.md`。
 - **UnityPy**，K0lb3，MIT。https://github.com/K0lb3/UnityPy
 - **Python**，Python Software Foundation 及各上游贡献者，PSF License 与附带组件许可。
 - **.NET / WPF**，.NET Foundation、Microsoft 及贡献者，MIT 与随附第三方声明。

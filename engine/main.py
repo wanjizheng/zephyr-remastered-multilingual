@@ -2,16 +2,29 @@
 import argparse,contextlib,gzip,hashlib,json,os,re,shutil,subprocess,sys,uuid
 from pathlib import Path
 from resources import rebuild,safe,sha
-from trusted_payload import HASHES
-VERSION='0.2.0'
+from trusted_payload import PAYLOADS
+VERSION='0.4.0'
+WORK_DIRS={'backup':'b','staging':'s','rollback':'t','verification':'v'}
+def workdir(home,kind,token=None):
+ if token is not None:return home/WORK_DIRS[kind]/token
+ for _ in range(10):
+  candidate=home/WORK_DIRS[kind]/uuid.uuid4().hex[:16]
+  if not candidate.exists():return candidate
+ raise ValueError('无法建立唯一的工作目录，请稍后重试。')
 def read(p):return json.loads(p.read_text(encoding='utf8'))
 def write(p,value):
  p.parent.mkdir(parents=True,exist_ok=True);tmp=p.with_suffix(p.suffix+'.new');tmp.write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf8');os.replace(tmp,p)
-def payload_default():return Path(sys.executable).parent/'payload' if getattr(sys,'frozen',False) else Path(__file__).resolve().parents[1]/'payload'
+def payload_default():
+ base=Path(sys.executable).parent if getattr(sys,'frozen',False) else Path(__file__).resolve().parents[1]
+ for candidate in (base/'payload',base.parent/'payload'):
+  if candidate.is_dir():return candidate
+ return base/'payload'
 class Patcher:
- def __init__(self,game,payload=None,state_home=None):
-  self.game=Path(game).resolve();self.payload=Path(payload or payload_default()).resolve()
-  for n,h in HASHES.items():
+ def __init__(self,game,payload=None,state_home=None,language='zh-Hans'):
+  self.game=Path(game).resolve();self.language=language
+  if language not in PAYLOADS:raise ValueError('不支持的汉化语言。')
+  root=Path(payload or payload_default()).resolve();self.payload=(root/language if (root/language).is_dir() else root).resolve()
+  for n,h in PAYLOADS[language].items():
    if sha(self.payload/n)!=h:raise ValueError('汉化数据损坏，请重新下载官方发布包。')
   self.patch=json.loads(gzip.decompress((self.payload/'patch.json.gz').read_bytes()));self.files=self.patch['files'];self.names={r['path'] for r in self.files}
   for name in self.names:
@@ -58,7 +71,7 @@ class Patcher:
   elif actual==after:kind='unmanaged_localization'
   else:kind='unsupported_or_modified'
   backups=self.backup_rows()
-  return dict(status=kind,version=VERSION,installed_version=(state or {}).get('version'),game_build=self.patch['game_build'],installed_build=self.installed_build(),compatibility_reason=reason,can_install=kind in ['original','update_available','installed'],can_restore=bool(state) and len(backups)==len(self.files) and kind in ['installed','update_available'],can_force_restore=bool(backups) and kind!='recovery_required',backup_files=len(backups),backup_complete=len(backups)==len(self.files),backup_available=bool(backups))
+  return dict(status=kind,version=VERSION,language=self.language,installed_language=(state or {}).get('language'),installed_version=(state or {}).get('version'),game_build=self.patch['game_build'],installed_build=self.installed_build(),compatibility_reason=reason,can_install=kind in ['original','update_available','installed'],backup_files=len(backups),backup_complete=len(backups)==len(self.files),backup_available=bool(backups))
  @contextlib.contextmanager
  def locked(self):
   import msvcrt
@@ -106,7 +119,7 @@ class Patcher:
   with self.locked():self._recover()
   return self.status()
  def transaction(self,source,desired,next_state,fail_after=None,selected=None):
-  self.stopped();before=self.actual();txid=uuid.uuid4().hex;rollback=self.home/'transactions'/txid/'rollback'
+  self.stopped();before=self.actual();rollback=workdir(self.home,'rollback')
   entries=[dict(path=r['path'],before=before[r['path']],after=desired[r['path']]) for r in (selected if selected is not None else self.files)]
   for r in entries:
    if r['before'] is not None:
@@ -132,7 +145,7 @@ class Patcher:
    if state['status'] not in ['original','update_available']:raise ValueError('当前文件不是受支持的原版或本工具管理的汉化版，请先用 Steam 验证文件。')
    if not self.original.exists():
     if state['status']!='original':raise ValueError('缺少原版备份，无法更新')
-    temporary=self.home/('original-'+uuid.uuid4().hex)
+    temporary=workdir(self.home,'backup')
     for r in self.files+self.patch['dependencies']:
      src=safe(self.game,r['path']);dst=safe(temporary,r['path']);dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst)
     temporary.rename(self.original)
@@ -143,48 +156,27 @@ class Patcher:
      src=safe(self.game,r['path'])
      if not src.is_file() or sha(src)!=r['before_sha256']:raise ValueError('新增资源缺少原版备份，请先通过 Steam 验证完整性。')
      self.copy_checked(src,dst,r['before_sha256'])
-   self.verify_original();stage=self.home/'staging'/uuid.uuid4().hex;rebuild(self.original,stage,self.patch,self.payload)
-   desired={r['path']:r['after_sha256'] for r in self.files};next_state=dict(version=VERSION,game_build=self.patch['game_build'],installed_files=desired)
+   self.verify_original();stage=workdir(self.home,'staging');rebuild(self.original,stage,self.patch,self.payload)
+   desired={r['path']:r['after_sha256'] for r in self.files};next_state=dict(version=VERSION,language=self.language,game_build=self.patch['game_build'],installed_files=desired)
    self.transaction(stage,desired,next_state)
   return self.status()
- def restore(self):
-  with self.locked():
-   self.stopped();self.guard_game()
-   if self.journalfile.exists():raise ValueError('请先恢复上次操作')
-   status=self.status()
-   if status['status']=='original':return status
-   if not status['can_restore']:raise ValueError('当前文件不受本工具管理或已经变化，不能覆盖恢复。')
-   self.verify_original();desired={r['path']:r['before_sha256'] for r in self.files};self.transaction(self.original,desired,dict(version=None,game_build=self.patch['game_build'],installed_files={}))
-  return self.status()
- def force_restore(self,confirmed=False):
-  if not confirmed:raise ValueError('从旧备份强制恢复需要明确二次确认。')
-  with self.locked():
-   self.stopped()
-   if not (self.game/'ZephyrRemastered.exe').is_file():raise ValueError('请选择游戏目录')
-   if self.journalfile.exists():raise ValueError('请先恢复上次操作')
-   rows=self.backup_rows()
-   if not rows:raise ValueError('没有可校验的原版备份，请使用 Steam 验证完整性。')
-   desired=self.actual()
-   for r in rows:desired[r['path']]=r['before_sha256']
-   self.transaction(self.original,desired,dict(version=None,game_build=self.patch['game_build'],installed_files={}),selected=rows)
-  return dict(self.status(),force_restored_files=len(rows),steam_verification_recommended=True)
  def verify(self):
   """Read-only game validation and full reconstruction, useful for release QA."""
   with self.locked():
    self.guard_game()
    if self.status()['status']!='original':raise ValueError('离线验证需要受支持的原版文件')
-   before=self.actual();folder=self.home/'verification'/uuid.uuid4().hex
-   original=folder/'original'
+   before=self.actual();folder=workdir(self.home,'verification')
+   original=folder/'o'
    for r in self.files+self.patch['dependencies']:
     dst=safe(original,r['path']);dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(safe(self.game,r['path']),dst)
-   rebuild(original,folder/'rebuilt',self.patch,self.payload)
+   rebuild(original,folder/'r',self.patch,self.payload)
    if self.actual()!=before:raise ValueError('验证期间源文件发生变化')
   return dict(status='verified',files=len(self.files),game_files_changed=False)
 def main():
  for stream in (sys.stdout,sys.stderr):
   if hasattr(stream,'reconfigure'):stream.reconfigure(encoding='utf8')
- ap=argparse.ArgumentParser();ap.add_argument('action',choices=['status','install','restore','force_restore','recover','verify']);ap.add_argument('--game',required=True);ap.add_argument('--payload');ap.add_argument('--confirm-old-backup',action='store_true');args=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('action',choices=['status','install','recover','verify']);ap.add_argument('--game',required=True);ap.add_argument('--payload');ap.add_argument('--language',choices=PAYLOADS);args=ap.parse_args()
  try:
-  p=Patcher(args.game,args.payload);result=p.force_restore(confirmed=args.confirm_old_backup) if args.action=='force_restore' else getattr(p,args.action)();print(json.dumps(dict(ok=True,**result),ensure_ascii=False))
+  p=Patcher(args.game,args.payload,language=args.language or 'zh-Hans');result=getattr(p,args.action)();print(json.dumps(dict(ok=True,**result),ensure_ascii=False))
  except Exception as ex:print(json.dumps(dict(ok=False,error=str(ex)),ensure_ascii=False));sys.exit(1)
 if __name__=='__main__':main()

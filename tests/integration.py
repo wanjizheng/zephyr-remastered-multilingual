@@ -18,8 +18,10 @@ def run(fixture,work):
  assert p.status()['status']=='update_available'
  assert p.install()['status']=='installed' and p.actual()==installed
  p.verify_original();checks.append('managed upgrade reuses intact original backup')
- assert p.restore()['status']=='original' and p.actual()==baseline;checks.append('restore is byte-exact')
- stage=next((p.home/'staging').iterdir())
+ assert not hasattr(p,'restore') and not hasattr(p,'force_restore')
+ for row in p.files:shutil.copy2(safe(p.original,row['path']),safe(game,row['path']))
+ assert p.status()['status']=='original' and p.actual()==baseline;checks.append('Steam restore fixture recognized; manual local restore actions absent')
+ stage=next((p.home/'s').iterdir())
  next_state=dict(version=p.patch['version'],installed_files=installed)
  try:p.transaction(stage,installed,next_state,fail_after=3)
  except RuntimeError:pass
@@ -51,28 +53,21 @@ def run(fixture,work):
  except ValueError:pass
  else:raise AssertionError('tampered payload accepted')
  checks.append('tampered payload rejected')
- # A modified game must keep a verified backup recovery route, even when its
- # executable or streaming dependencies belong to a newer Steam version.
+ # An updated game must not be overwritten from an old local backup.
  target=safe(game,first);original_bytes=target.read_bytes();target.write_bytes(original_bytes+b'edited')
  exe=game/'ZephyrRemastered.exe';exe_bytes=exe.read_bytes();exe.write_bytes(exe_bytes+b'new Steam version')
- assert p.status()['status']=='unsupported_or_modified' and p.status()['can_force_restore']
- try:p.force_restore()
+ assert p.status()['status']=='unsupported_or_modified'
+ try:p.install()
  except ValueError:pass
- else:raise AssertionError('force restore did not require explicit confirmation')
- assert target.read_bytes()==original_bytes+b'edited';checks.append('force restore requires explicit confirmation')
- r=p.force_restore(confirmed=True)
- assert r['force_restored_files']==len(p.files) and p.actual()==baseline
- assert exe.read_bytes()==exe_bytes+b'new Steam version'
- assert r['status']=='unsupported_or_modified' and r['steam_verification_recommended']
- exe.write_bytes(exe_bytes);checks.append('force restore works with updated EXE without overwriting EXE or claiming compatibility')
- target.unlink();assert p.status()['can_force_restore']
- p.force_restore(confirmed=True);assert p.actual()==baseline
- checks.append('force restore recreates missing target files')
+ else:raise AssertionError('updated game accepted for install')
+ assert target.read_bytes()==original_bytes+b'edited' and exe.read_bytes()==exe_bytes+b'new Steam version'
+ target.write_bytes(original_bytes);exe.write_bytes(exe_bytes)
+ checks.append('updated game is not overwritten from local backup')
  # Failure recovery must restore the exact modified baseline, including absence.
  target.unlink();missing_baseline=p.actual()
  try:p.transaction(p.original,baseline,dict(version=None,installed_files={}),fail_after=3)
  except RuntimeError:pass
- else:raise AssertionError('force-restore interruption fixture did not fail')
+ else:raise AssertionError('transaction interruption fixture did not fail')
  assert p.actual()==missing_baseline and not target.exists()
  target.write_bytes(original_bytes);checks.append('interrupted recovery preserves missing-file pre-operation state')
  saved_game=p.game;fake=work/'steamapps/common/TestGame';fake.mkdir(parents=True)

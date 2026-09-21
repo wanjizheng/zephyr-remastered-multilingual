@@ -12,17 +12,21 @@ public partial class App : Application
   if(e.Args.Length>=2 && e.Args[0]=="--render-preview")
   {
    window.PreparePreview(e.Args.Length>=3?e.Args[2]:"original");
+   if(e.Args.Contains("ui-en")||e.Args.Contains("patch-en"))window.EnLanguage.IsChecked=true;
+   if(e.Args.Contains("ui-zh-Hant")||e.Args.Contains("patch-zh-Hant"))window.TwLanguage.IsChecked=true;
+   if(e.Args.Length>=3 && e.Args[2]=="install-progress")window.PreparePreview("install-progress");
    if(e.Args.Contains("small")){window.Width=940;window.Height=680;}
    window.Show();window.UpdateLayout();await Task.Delay(200);
-   if(e.Args.Contains("restore")||e.Args.Contains("force"))
+   if(e.Args.Length>=3 && e.Args[2]=="install-progress")
    {
-    window.RestoreButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));await Task.Delay(250);
+    var progressBottom=window.ProgressText.TranslatePoint(new Point(0,window.ProgressText.ActualHeight),window).Y;
+    var footerTop=window.FooterVersion.TranslatePoint(new Point(0,0),window).Y;
+    if(progressBottom+8>=footerTop)throw new InvalidOperationException($"Progress text overlaps footer: {progressBottom:F1} >= {footerTop:F1}");
+   }
+   if(e.Args.Contains("restore"))
+   {
+    window.RestoreButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));await Task.Delay(650);
     if(!window.Dialogs.IsOpen)throw new InvalidOperationException("Restore dialog did not open");
-    if(e.Args.Contains("force"))
-    {
-     MaterialDesignThemes.Wpf.DialogHost.CloseDialogCommand.Execute("backup",window.Dialogs);await Task.Delay(300);
-     if(!window.Dialogs.IsOpen)throw new InvalidOperationException("Force restore confirmation did not open");
-    }
    }
    var bounds=VisualTreeHelper.GetDescendantBounds(window);
    var bitmap=new RenderTargetBitmap((int)Math.Ceiling(bounds.Right),(int)Math.Ceiling(bounds.Bottom),96,96,PixelFormats.Pbgra32);bitmap.Render(window);

@@ -1,2 +1,2 @@
 """Pinned, fully reconstructed release inputs."""
-HASHES = {'patch.json.gz': 'a5c7adc6c80887c172401fb117dc28f7de97fd3d382bdc36a8c5c71d420cb9f8', 'glyphs.zip': 'b448fe8da764c71a1dbc74c7e60f5c2f477bc376352c8e5a673c5b6068ce4ae7'}
+PAYLOADS={'zh-Hans':{'patch.json.gz':'b218b889fcca64a13f8db6e941c9c7940ec54d1bb28bc05fb658847ba8840474','glyphs.zip':'b448fe8da764c71a1dbc74c7e60f5c2f477bc376352c8e5a673c5b6068ce4ae7'},'zh-Hant':{'patch.json.gz':'4dff6b128f81d733a872f6d7addc9ec99a547e1d16c658f168435098e5bc708f','glyphs.zip':'da7faef6655df691f2739f51696950a1d9461851158fe55861ac4c17d61399d3'},'en':{'patch.json.gz':'0d5fa0e5fcd6bd05b990ee9c370ee75e669142c82350c33547b2d6de50ff7c3d','glyphs.zip':'54bbb8fa12a06c723a77cabc9842aadd4feba8872161cc12593661231ee38d98'}}
