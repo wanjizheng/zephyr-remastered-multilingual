@@ -7,7 +7,7 @@
 
 免费、非官方的三语言本地翻译补丁 · 保留原作美术字
 
-[**下载汉化工具**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases)　｜　[人物译名对照](#人物译名对照)　｜　[反馈问题](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues)　｜　[支持正版](https://store.steampowered.com/app/5099430/)
+[**下载汉化工具**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases)　｜　[**边玩边校对 / Contribute**](docs/dialogue-review.md)　｜　[人物译名对照](#人物译名对照)　｜　[反馈问题](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues)　｜　[支持正版](https://store.steampowered.com/app/5099430/)
 
 [简体中文](#简体中文使用说明) · [繁體中文](#繁體中文使用說明) · [English](#english-guide)
 
@@ -15,11 +15,37 @@
 
 ---
 
+## v0.4.4 · 边玩边校对，让这段冒险因你更好
+
+**不必会编程，也不必翻译整章。从你发现的那一句开始。**
+
+一句不自然的对白、一个不合人物语气的称呼、一处错字，都值得被认真打磨。现在可以从安装器打开 **“对白校对”**，一边玩，一边查看捕获的台词、写下自己的修改建议，再导出交给维护者审阅。**简体、繁体和英文玩家都可以参与。**
+
+**遇到一句 → 写下建议 → 导出修改包 → 在 GitHub 提交 → 审阅采用后进入后续更新。**
+
+不用截图抄整段，也不用寻找资源文件：可识别的台词会带上定位与版本信息。最近 20 句方便回看，已修改条目单独保留。你也可以只说明哪里不对，让社区一起讨论更好的表达。我们希望这不只是一个下载补丁的地方，更是喜欢这部作品的人共同打磨译文的地方。
+
+[**开始参与：中文操作教程**](docs/dialogue-review.md) · [**English contribution guide**](docs/dialogue-review.en.md) · [**提交翻译建议**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new?template=translation.yml) · [**下载 v0.4.4**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.4)
+
+> 校对记录只在本次窗口会话中保留，**关闭前请导出**。建议不会立即改动游戏或自动提交。部分对话可能尚不能定位；遇到漏句仍可附截图反馈。详见教程中的排查说明。
+
+## Play, notice, improve — help shape the translation
+
+**You do not need to code or translate a whole chapter. One thoughtful correction is enough to contribute.**
+
+v0.4.4 brings **Dialogue review** to the public release: play the game, capture a supported line, suggest clearer or more natural wording, and export it for review. English, Simplified Chinese, and Traditional Chinese players are all welcome. Help a character sound like themselves, clarify a confusing sentence, or catch a typo that everyone else missed.
+
+**Notice a line → suggest an improvement → export → submit an issue → accepted changes reach a future patch.** The assistant includes line and version information for captured entries, so you can focus on the words. You can also leave a note without writing a replacement. Let's make this a place where players help one another enjoy the story, one line at a time.
+
+[**Read the English tutorial**](docs/dialogue-review.en.md) · [**Contribute a suggestion**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new?template=translation.yml) · [**Download v0.4.4**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.4)
+
+> **Export before closing:** review records last only for the current window session. Suggestions do not change the running game or submit themselves. Some dialogue cannot yet be located; screenshots and manual reports are welcome too.
+
 ## English guide
 
 **The Rhapsody of Zephyr Remastered — unofficial, free localization for Simplified Chinese, Traditional Chinese, and English.** The patcher modifies only a player's legally installed Steam copy on their own computer. It does not provide the game, upload game files, or require a GitHub account.
 
-1. Download **`Zephyr-Chinese-Patcher-0.4.1.zip`** from [GitHub Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1). Download the ZIP asset, not GitHub's “Source code” archive.
+1. Download **`Zephyr-Chinese-Patcher-0.4.4.zip`** from [GitHub Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.4). Download the ZIP asset, not GitHub's “Source code” archive.
 2. Extract the whole ZIP and run `ZephyrChinesePatcher.exe` on Windows 10 or 11 (x64). Keep the `tools`, `payload`, and `licenses` folders beside the program. No separate .NET, Python, or Unity installation is needed.
 3. Save and fully exit the game. Choose **EN** at the top right of the patcher, select the folder containing `ZephyrRemastered.exe`, then install. **CN** installs Simplified Chinese; **TW** installs Traditional Chinese. The same buttons change the patcher's interface language.
 4. To change languages, select another button and install again. To return to the original game, use the patcher's **Steam verification** button. An interrupted or failed installation can be rolled back automatically; saved games are not changed.
@@ -34,7 +60,7 @@ This is an independent fan project, unaffiliated with the developer or publisher
 
 **《西風狂詩曲 重製版》免費、非官方的簡體中文、繁體中文及英文翻譯補丁。** 安裝工具只會在玩家自己的電腦上修改合法安裝的 Steam 遊戲檔案；不提供遊戲本體，也不會上傳遊戲資源。
 
-1. 從 [GitHub Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1) 下載 **`Zephyr-Chinese-Patcher-0.4.1.zip`**。請下載 ZIP 安裝包，不要下載 GitHub 自動產生的「Source code」。
+1. 從 [GitHub Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.4) 下載 **`Zephyr-Chinese-Patcher-0.4.4.zip`**。請下載 ZIP 安裝包，不要下載 GitHub 自動產生的「Source code」。
 2. 完整解壓縮，在 Windows 10／11 x64 執行 `ZephyrChinesePatcher.exe`。請保留旁邊的 `tools`、`payload` 和 `licenses` 資料夾；不必另外安裝 .NET、Python 或 Unity。
 3. 儲存進度並完全關閉遊戲。在工具右上角選 **TW**，選擇包含 `ZephyrRemastered.exe` 的遊戲資料夾後安裝。**CN** 為簡體中文，**EN** 為英文；按鈕也會切換安裝工具本身的介面語言。
 4. 要切換語言，選擇另一個按鈕並重新安裝。要回復原版，請按工具內的 **Steam 驗證**按鈕。安裝失敗時工具會自動回滾；不會修改存檔。
@@ -77,7 +103,7 @@ This is an independent fan project, unaffiliated with the developer or publisher
 
 | 下载 | 安装 | 恢复 |
 | :--- | :--- | :--- |
-| 在 [Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1) 下载程序 ZIP | 退出游戏，选 CN／TW／EN 和游戏目录，再点击安装 | 退出游戏，用工具中的 Steam 验证入口恢复原版 |
+| 在 [Releases](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.4) 下载程序 ZIP | 退出游戏，选 CN／TW／EN 和游戏目录，再点击安装 | 退出游戏，用工具中的 Steam 验证入口恢复原版 |
 | 完整解压，不要只取出 EXE | 等待校验完成，再自行启动游戏 | Steam 完成验证后由工具重新检测，不改动存档 |
 
 1. 下载 `Zephyr-Chinese-Patcher-*.zip`，**不要把 Source code 当作安装包**。
@@ -157,19 +183,19 @@ This is an independent fan project, unaffiliated with the developer or publisher
 
 ## 当前版本与内容范围
 
-### 当前正式版本：v0.4.1
+### 当前正式版本：v0.4.4
 
-- 新增 **繁體中文** 与 **English**，安装器右上角的 CN／TW／EN 同时控制工具界面与游戏翻译。**繁体版仅将简体字转换为繁体字，没有针对繁体口语习惯优化。英文版因时间有限，由 GPT 根据已确定人物关系和其他信息的简体译文直接进行 AI 翻译；英文的字体和界面没有做全面优化。**有问题请及时反馈。
-- 保留简体版已有修改，并修复三语言共享基础攻击技能被错误冠以角色名的问题；英文基础技能名在战斗菜单中保持可区分。
-- 针对已发现的问题修复部分英文菜单与设置页面的溢出和译词、安装进度文字的语言切换，以及繁体字形显示；这些局部修正不代表已全面优化英文排版。
-- 缩短安装临时及回滚路径，降低 Windows 10 默认路径长度限制下的安装失败风险。移除手动本地恢复，恢复原版请使用 Steam 验证；安装失败自动回滚仍然保留。
-- 完整变更见 [中英双语 CHANGELOG](CHANGELOG.md)。从旧版升级时请完整解压新包，避免混用旧引擎或旧语言数据。
+- **对白校对面向所有玩家开放**：从安装器打开，边玩边记录建议，支持简体、繁体和英文校对；导出带定位信息的修改包，提交给维护者审阅。查看[中文教程](docs/dialogue-review.md)／[English tutorial](docs/dialogue-review.en.md)。
+- 本次工作平台构建采用 **31 条简体对白修订**，并同步对应繁体条目，继续改善剧情表达、称呼和人物语气；不代表英文版同步重译了这 31 条。
+- 包含自 v0.4.1 以来积累的对白与中文字形修正，包括希尔弗相关台词和“吾”“渝”的字形调整。
+- 保留 CN／TW／EN 安装与界面切换、签名更新元数据、安装失败自动回滚及 Steam 验证恢复入口。
+- 完整升级请解压新包，避免混用旧工具和语言数据。见[中英双语更新日志](CHANGELOG.md)。
 
-下载 [v0.4.1 正式版](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.1)。
+下载 [v0.4.4 正式版](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.4.4)。
 
 | 项目 | 说明 |
 | :--- | :--- |
-| 工具版本 | **v0.4.1** · 当前正式版 |
+| 工具版本 | **v0.4.4** · 当前正式版 |
 | 游戏语言 | 简体中文、繁體中文、English；不改变游戏本身的官方语言支持 |
 | 支持游戏 | Steam App `5099430`，已核验 Build `25418345` 的精确资源版本 |
 | 系统 | Windows 10 / 11 x64；自动化开发验证环境为 Windows 11 |
@@ -229,7 +255,7 @@ This is an independent fan project, unaffiliated with the developer or publisher
 
 本项目免费、非官方，与游戏开发商、发行商没有隶属或授权关系，不提供游戏本体、破解或绕过购买验证的功能。
 
-仓库和发行包只包含工具、三语言翻译改动数据、许可字形及开源运行依赖，不包含原版或翻译后的完整游戏资源、音乐、视频或存档。不变的资源和原始字形从玩家自己的游戏文件读取，重建结果留在本机。工具不上传游戏文件或个人信息，也不要求玩家登录 GitHub。
+仓库和发行包只包含工具、三语言翻译改动数据、许可字形及开源运行依赖，不包含原版或翻译后的完整游戏资源、音乐、视频或存档。不变的资源和原始字形从玩家自己的游戏文件读取，重建结果留在本机。工具不自动上传游戏文件或个人信息；本地安装和校对无需 GitHub 登录，主动在 GitHub 提交建议需要账号。
 
 自有工具代码采用 [MIT](LICENSE)；字体和依赖见 [第三方声明](THIRD_PARTY_NOTICES.md)。该许可证不授予原作、商标或剧情的权利。免费和补丁形式不等于官方授权；权利人可通过仓库联系维护者。目前只链接官方商店，不转载未经许可的官方宣传图。
 

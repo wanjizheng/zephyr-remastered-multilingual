@@ -1,6 +1,6 @@
-name: 翻译校对建议
-description: 提交带有台词 key 和资源定位的修改建议
-title: "[翻译校对] "
+name: 翻译校对建议 / Translation suggestion
+description: 提交对白修改建议 / Suggest an improvement to a translated line
+title: "[Translation / 翻译校对] "
 body:
   - type: dropdown
     id: language
@@ -15,21 +15,21 @@ body:
       required: true
   - type: markdown
     attributes:
-      value: "在对白校对助手中填写建议，选择“导出修改包”，将 ZIP 拖入下方。请勿附上游戏资源包、程序文件或存档。"
+      value: "教程 / Tutorial: https://github.com/wanjizheng/zephyr-remastered-zh-cn/blob/main/docs/dialogue-review.en.md 。从助手导出修改包并附在下方。Export suggestions from Dialogue review and attach the ZIP below. 请勿附游戏资源、程序或存档 / Do not attach game assets, executables, or saves."
   - type: textarea
     id: suggestions
     attributes:
-      label: 修改内容与定位信息
-      description: 粘贴助手生成的 Issue 内容；手动提交请包含目标语言、语言包版本/哈希、fieldID、key、原文、建议译文及原因。
+      label: 修改内容与定位信息 / Suggestions and context
+      description: 粘贴助手生成的内容，或说明场景、原文、建议和原因。Paste the generated issue text, or describe the scene, original line, suggestion, and reason. Missing line IDs are OK for manual reports.
     validations:
       required: true
   - type: textarea
     id: attachment
     attributes:
-      label: 导出的 JSON 或 ZIP
-      description: 拖入助手导出的修改包，便于维护者精确定位与核对版本。
+      label: 导出的 JSON 或 ZIP / Exported JSON or ZIP
+      description: 附上导出包或必要截图 / Attach your exported package or relevant screenshots.
   - type: input
     id: version
     attributes:
-      label: 游戏 / 汉化版本
-      placeholder: 如不清楚，请保留导出中的 GameAssembly SHA-256
+      label: 游戏 / 汉化版本 · Game / patch version
+      placeholder: e.g. patch v0.4.4; include the exported version details if unsure

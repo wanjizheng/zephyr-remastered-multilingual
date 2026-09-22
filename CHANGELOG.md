@@ -1,6 +1,20 @@
 # 更新日志 / Changelog
 
-## [Unreleased]
+## [0.4.4] - 2026-09-22
+
+### 中文
+
+- 正式发布安装器集成的对白校对功能，支持简体、繁体和英文建议、最近台词回看、编辑保护及导出提交。新增[玩家教程](docs/dialogue-review.md)。
+- 本次构建采用 31 条简体对白修改，并同步对应繁体条目；本项不表示英文同步重译。
+- 校对建议不会立即改变游戏。关闭前需要导出；部分对话仍可能漏检，场景切换导致暂停时可点击继续读取。
+
+### English
+
+- Public release of integrated Dialogue review: suggestions in Simplified Chinese, Traditional Chinese, and English; recent-line history; protected editing; and export for submission. Added an [English tutorial](docs/dialogue-review.en.md).
+- This build adopts 31 Simplified Chinese revisions and synchronizes the corresponding Traditional Chinese entries, without claiming an English retranslation of those lines.
+- Suggestions do not change the running game. Export before closing. Some dialogue may be missed; click Resume if scene transitions pause reading.
+
+### 自 v0.4.1 起累计包含 / Also included since v0.4.1
 
 ### 中文
 
