@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType><TargetFramework>net10.0-windows</TargetFramework>
     <UseWPF>true</UseWPF><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>ZephyrChinesePatcher</AssemblyName><Version>0.4.3</Version><FileVersion>0.4.3.0</FileVersion>
+    <AssemblyName>ZephyrChinesePatcher</AssemblyName><Version>0.4.4</Version><FileVersion>0.4.4.0</FileVersion>
     <PublishSingleFile>true</PublishSingleFile><IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract><EnableCompressionInSingleFile>true</EnableCompressionInSingleFile><SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages><DebugType>embedded</DebugType><ApplicationIcon>Assets/patcher.ico</ApplicationIcon><ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup><Resource Include="Assets/patcher.ico" /><PackageReference Include="MaterialDesignThemes" Version="5.3.2" /><EmbeddedResource Include="Dialogue/ResourceIndex.json" LogicalName="ZephyrPatcher.DialogueIndex.json" /><EmbeddedResource Include="Dialogue/Catalogs.json" LogicalName="ZephyrPatcher.DialogueCatalogs.json" /></ItemGroup></Project>
