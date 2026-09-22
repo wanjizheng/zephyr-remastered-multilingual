@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
  <PropertyGroup><TargetFramework>net10.0</TargetFramework><OutputType>Exe</OutputType><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
  <ItemGroup><Compile Include="../app/GamePaths.cs" Link="GamePaths.cs"/><Compile Include="../app/Updates.cs" Link="Updates.cs"/><Compile Include="../app/ReleaseKey.cs" Link="ReleaseKey.cs"/><Compile Include="../app/SteamVerificationWatch.cs" Link="SteamVerificationWatch.cs"/></ItemGroup>
+ <ItemGroup><Compile Remove="dialogue/**/*.cs" /></ItemGroup>
 </Project>

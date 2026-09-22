@@ -1,0 +1,7 @@
+{
+  "registry_sha256": "20e80f33d98f29047331135e6b8c46e2b4ac1fd629ef0bdbfb00091df7ae3d5a",
+  "index_sha256": "2099f424f3eb2514cafdbdffba255013570a247b2790db88e518660be1c2b122",
+  "entries": 14751,
+  "contains_dialogue_text": false,
+  "mapping_status": "registry coordinates, not per-install runtime asset proof"
+}

@@ -32,7 +32,7 @@ def texture_pixels(original,width,height,recipe,payload):
   for tile in recipe['tiles']:
    assert tile['kind']=='licensed'
    x,y,w,h=tile['to'];assert 0<=x and x+w<=width and 0<=y and y+h<=height
-   name=tile['sha256']+'.z';blob=(payload/'glyphs'/name).read_bytes() if (payload/'glyphs').exists() else glyph_archive(str(payload/'glyphs.zip')).read(name)
+   name=tile['sha256']+'.z';blob=(payload/'glyphs'/name).read_bytes() if (payload/'glyphs').exists() else glyph_archive(str(payload/('auto-glyphs.zip' if tile.get('archive')=='auto' else 'glyphs.zip'))).read(name)
    raw=zlib.decompress(blob);assert digest(raw)==tile['sha256'] and len(raw)==w*h
    for i in range(h):
     row=bytearray(b'\xff'*(w*4));row[3::4]=raw[i*w:(i+1)*w];start=((y+i)*width+x)*4;out[start:start+w*4]=row
@@ -44,7 +44,7 @@ def texture_pixels(original,width,height,recipe,payload):
   if kind=='original':
    sx,sy=tile['from'];ow=recipe['original_width'];data=b''.join(original[(sy+i)*ow+sx:(sy+i)*ow+sx+w] for i in range(h))
   elif kind=='licensed':
-   name=tile['sha256']+'.z';blob=(payload/'glyphs'/name).read_bytes() if (payload/'glyphs').exists() else glyph_archive(str(payload/'glyphs.zip')).read(name)
+   name=tile['sha256']+'.z';blob=(payload/'glyphs'/name).read_bytes() if (payload/'glyphs').exists() else glyph_archive(str(payload/('auto-glyphs.zip' if tile.get('archive')=='auto' else 'glyphs.zip'))).read(name)
    raw=zlib.decompress(blob);assert digest(raw)==tile['sha256'];assert len(raw)==w*h;data=raw
   else:raise ValueError('Unknown pixel source')
   assert 0<=x and x+w<=width and 0<=y and y+h<=height

@@ -167,6 +167,8 @@ public partial class MainWindow : Window
   // The default CN icon is checked while XAML is still constructing later controls.
   if(MainHeading is null||CnLanguage is null||TwLanguage is null||EnLanguage is null)return;
   var lang=AppLanguage; bool hant=lang=="zh-Hant", english=lang=="en";
+  if(ProofreaderButton is not null)ProofreaderButton.Content=english?"Dialogue review":hant?"對白校對":"对白校对";
+  if(proofreader is not null)try{proofreader.ChangeContext(GamePath.Text,lang);}catch(Exception ex){MessageBox.Show(this,ex.Message);}
   Title=english?"The Rhapsody of Zephyr · Localization Patcher":hant?"西風狂詩曲 · 漢化工具":"西风狂诗曲 · 汉化工具";
   SidebarProject.Text=english?"Community localization":hant?"民間漢化計畫":"民间汉化计划";
   SidebarTitle.Text=english?"Rhapsody of Zephyr":hant?"西風狂詩曲":"西风狂诗曲";
@@ -176,7 +178,7 @@ public partial class MainWindow : Window
   MainHeading.Text=english?"Return to a familiar world":hant?"中文，回到熟悉的世界":"中文，回到熟悉的世界";
   MainSubheading.Text=english?"Select the game folder to install the patch.":hant?"選擇遊戲目錄，即可安裝漢化。":"选择游戏目录，即可安装汉化。";
   SidebarEdition.Text=english?"Remastered localization patch":hant?"重製版多語言翻譯":"重制版多语言翻译";
-  VersionBadge.Text=english?"v0.4.2 preview.2":hant?"v0.4.2 預覽測試版 2":"v0.4.2 预览测试版 2";
+  VersionBadge.Text=english?"v0.4.2":hant?"v0.4.2":"v0.4.2";
   GameDirectoryLabel.Text=english?"Game folder":hant?"遊戲目錄":"游戏目录";
   LanguageIconLabel.Text=english?"Install language":hant?"安裝語言":"安装语言";
   GamePath.ToolTip=english?"Select the folder containing ZephyrRemastered.exe":hant?"選擇包含 ZephyrRemastered.exe 的資料夾":"选择包含 ZephyrRemastered.exe 的文件夹";
@@ -187,7 +189,7 @@ public partial class MainWindow : Window
   FeedbackButton.Content=english?"Feedback":hant?"問題回報":"问题反馈";
   StoreButton.Content=english?"Support the official game":hant?"支持正版":"支持正版";
   RecoverButton.Content=english?"Repair interrupted install":hant?"修復中斷的安裝":"修复中断的安装";
-  FooterVersion.Text=english?"v0.4.2 preview.2 · Unofficial localization tool":hant?"v0.4.2 預覽測試版 2 · 非官方漢化工具":"v0.4.2 预览测试版 2 · 非官方汉化工具";
+  FooterVersion.Text=english?"v0.4.2 · Unofficial localization tool":hant?"v0.4.2 · 非官方漢化工具":"v0.4.2 · 非官方汉化工具";
   UpdateInstallButtonText();
   if(lastState is JsonElement current)ShowState(current);
   else{StateTitle.Text=L("等待选择游戏目录");StateDetail.Text=L("请选择包含 ZephyrRemastered.exe 的文件夹。");}
@@ -213,6 +215,13 @@ public partial class MainWindow : Window
  async void RecheckClick(object sender,RoutedEventArgs e){if(!busy){ProgressText.Text=L(IdleText);await Refresh();}}
  static void Open(string url)=>Process.Start(new ProcessStartInfo(url){UseShellExecute=true});
  void StoreClick(object sender,RoutedEventArgs e)=>Open("https://store.steampowered.com/app/5099430/");
+ Dialogue.DialogueWindow? proofreader;
+ void ProofreaderClick(object sender,RoutedEventArgs e)
+ {
+  if(proofreader is not null){proofreader.ChangeContext(GamePath.Text,AppLanguage);proofreader.Activate();return;}
+  try{proofreader=new Dialogue.DialogueWindow(GamePath.Text,language:AppLanguage);proofreader.Closed+=(_,_)=>proofreader=null;proofreader.Show();}
+  catch(Exception ex){MessageBox.Show(this,ex.Message,"校对窗口未能打开");}
+ }
  void FeedbackClick(object sender,RoutedEventArgs e)=>Open("https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new/choose");
  async Task CheckUpdates(bool manual)
  {

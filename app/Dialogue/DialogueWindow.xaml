@@ -1,0 +1,38 @@
+<Window x:Class="ZephyrPatcher.Dialogue.DialogueWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" Width="1120" Height="850" MinWidth="980" MinHeight="780" WindowStartupLocation="CenterScreen" Background="#F5F6F8" Foreground="#25334A" FontFamily="Microsoft YaHei UI" FontSize="14">
+ <Window.Resources>
+  <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}"><Setter Property="Margin" Value="0,0,8,0"/><Setter Property="Padding" Value="12,6"/><Setter Property="MinHeight" Value="36"/></Style>
+  <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignOutlinedTextBox}"><Setter Property="Padding" Value="14"/><Setter Property="TextWrapping" Value="Wrap"/><Setter Property="VerticalScrollBarVisibility" Value="Auto"/></Style>
+ </Window.Resources>
+ <Grid><Grid.RowDefinitions><RowDefinition Height="Auto" MinHeight="104"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+  <Border Background="#202E49"><Grid Margin="28,20"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <StackPanel><TextBlock x:Name="Heading" Foreground="White" FontFamily="STZhongsong, SimSun" FontSize="22" TextWrapping="Wrap" MaxWidth="680"/><TextBlock x:Name="Subtitle" Foreground="#AFBED4" FontSize="12" Margin="0,8,0,0"/></StackPanel>
+   <StackPanel Grid.Column="1" VerticalAlignment="Center"><TextBlock x:Name="LanguageBadge" Foreground="#E5C99A" FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Right"/><TextBlock x:Name="ScopeHint" Foreground="#AFBED4" FontSize="11" Margin="0,7,0,0" HorizontalAlignment="Right"/></StackPanel>
+  </Grid></Border>
+  <Grid Grid.Row="1" Margin="24,20,24,18"><Grid.ColumnDefinitions><ColumnDefinition Width="300"/><ColumnDefinition Width="22"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+   <Border Background="White" CornerRadius="8" Padding="14"><Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="12"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+    <Grid><TextBlock x:Name="ModifiedHeading" FontSize="16" FontWeight="SemiBold"/><TextBlock x:Name="ModifiedCount" Foreground="#667286" HorizontalAlignment="Right"/></Grid>
+    <ListBox x:Name="Modified" Grid.Row="1" Margin="0,8,0,0" BorderThickness="0" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled">     <ListBox.ItemContainerStyle><Style TargetType="ListBoxItem"><Setter Property="Padding" Value="10"/><Setter Property="Margin" Value="0,0,0,5"/><Setter Property="HorizontalContentAlignment" Value="Stretch"/></Style></ListBox.ItemContainerStyle>
+     <ListBox.ItemTemplate><DataTemplate><StackPanel><TextBlock Text="{Binding Sample.Key}" Foreground="#526582" FontSize="11"/><TextBlock Text="{Binding OriginalText}" TextWrapping="Wrap" MaxHeight="54" FontSize="13" Margin="0,5,0,0"/><TextBlock Text="●" Foreground="#A57E3E" HorizontalAlignment="Right"><TextBlock.Style><Style TargetType="TextBlock"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding HasSuggestion}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock></StackPanel></DataTemplate></ListBox.ItemTemplate>
+</ListBox>
+    <StackPanel Grid.Row="3"><Grid><TextBlock x:Name="HistoryHeading" FontSize="16" FontWeight="SemiBold"/><TextBlock x:Name="Count" Foreground="#667286" HorizontalAlignment="Right"/></Grid><CheckBox x:Name="Follow" IsChecked="True" Margin="0,10,0,8"/></StackPanel>
+    <ListBox x:Name="History" Grid.Row="4" BorderThickness="0" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled">     <ListBox.ItemContainerStyle><Style TargetType="ListBoxItem"><Setter Property="Padding" Value="10"/><Setter Property="Margin" Value="0,0,0,5"/><Setter Property="HorizontalContentAlignment" Value="Stretch"/></Style></ListBox.ItemContainerStyle>
+     <ListBox.ItemTemplate><DataTemplate><StackPanel><TextBlock Text="{Binding Sample.Key}" Foreground="#526582" FontSize="11"/><TextBlock Text="{Binding OriginalText}" TextWrapping="Wrap" MaxHeight="54" FontSize="13" Margin="0,5,0,0"/><TextBlock Text="●" Foreground="#A57E3E" HorizontalAlignment="Right"><TextBlock.Style><Style TargetType="TextBlock"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding HasSuggestion}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock></StackPanel></DataTemplate></ListBox.ItemTemplate>
+</ListBox>
+   </Grid></Border>
+   <Grid Grid.Column="2"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="68"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <Border Background="#E9EEF5" CornerRadius="6" Padding="12" Margin="0,0,0,12"><StackPanel><TextBlock x:Name="Status" FontSize="12" Foreground="#526582"/><TextBlock x:Name="Live" TextWrapping="Wrap" FontSize="13" MaxHeight="40" Margin="0,4,0,0"/></StackPanel></Border>
+    <Grid Grid.Row="1" Margin="0,0,0,7"><TextBlock x:Name="OriginalLabel" FontWeight="SemiBold"/><TextBlock x:Name="EntryKey" HorizontalAlignment="Right" FontSize="11" Foreground="#667286"/></Grid>
+    <TextBox x:Name="Original" Grid.Row="2" IsReadOnly="True" AcceptsReturn="True" FontSize="18" Background="White"/>
+    <TextBlock x:Name="SuggestionLabel" Grid.Row="3" FontWeight="SemiBold" Margin="0,14,0,7"/>
+    <TextBox x:Name="Suggestion" Grid.Row="4" AcceptsReturn="True" FontSize="18" Background="White" MaxLength="16000" IsEnabled="False"/>
+    <TextBlock x:Name="NoteLabel" Grid.Row="5" Margin="0,12,0,6" FontSize="12" Foreground="#667286"/>
+    <TextBox x:Name="Note" Grid.Row="6" AcceptsReturn="True" MaxLength="16000" IsEnabled="False" Background="White"/>
+    <StackPanel Grid.Row="7"><WrapPanel Margin="0,8,0,4"><Button x:Name="CopyButton" Click="CopyOriginal"/><Button x:Name="ClearButton" Click="ClearSuggestion"/><Button x:Name="ConfirmLanguageButton" Click="ConfirmLegacyLanguage" Visibility="Collapsed"/></WrapPanel><Expander x:Name="ResourceDetails" FontSize="12"><TextBox x:Name="Details" IsReadOnly="True" BorderThickness="0" FontSize="11" MaxHeight="110"/></Expander></StackPanel>
+   </Grid>
+   <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="0,18,0,0"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <DockPanel><StackPanel DockPanel.Dock="Right" Orientation="Horizontal"><Button x:Name="IssueButton" Click="PreviewIssue"/><Button x:Name="ExportButton" Click="Export" Style="{StaticResource MaterialDesignRaisedButton}" Padding="20,8" md:ButtonAssist.CornerRadius="6"/></StackPanel><StackPanel Orientation="Horizontal"><Button x:Name="ToggleButton" Click="Toggle"/><CheckBox x:Name="Pin" VerticalAlignment="Center" Margin="6,0,16,0"/><TextBlock x:Name="Saved" FontSize="12" Foreground="#667286" VerticalAlignment="Center"/></StackPanel></DockPanel>
+    <TextBlock x:Name="FooterHint" Grid.Row="1" FontSize="11" Foreground="#667286" Margin="0,12,0,0" TextWrapping="Wrap"/>
+   </Grid>
+  </Grid>
+ </Grid>
+</Window>
