@@ -11,6 +11,7 @@ public partial class DialogueWindow : Window
  readonly DispatcherTimer timer=new(){Interval=TimeSpan.FromMilliseconds(100)},saveTimer=new(){Interval=TimeSpan.FromMilliseconds(500)};
  readonly DialogueStore store;readonly DialogueIndex index=new();readonly DialogueCatalog catalog=new();readonly DialogueReader reader=new();
  DialogueEntry? selected;bool refreshing,loading,busy,closing,paused,resetReader;int errors,generation;
+ DateTimeOffset retryAfter=DateTimeOffset.MinValue;
  string lastLive="",gamePath,language,runtimeLanguage;
  string T(string cn,string tw,string en)=>language=="en"?en:language=="zh-Hant"?tw:cn;
  string LanguageName=>language=="en"?"English":language=="zh-Hant"?"繁體中文":"简体中文";
@@ -38,6 +39,7 @@ public partial class DialogueWindow : Window
   if(!DialogueCatalog.Languages.Contains(locale)||(path==gamePath&&locale==language))return;
   if(!SaveNow())throw new IOException("Draft save failed");
   generation++;resetReader=path!=gamePath;gamePath=path;language=locale;runtimeLanguage=DialogueCatalog.InstalledLanguage(path);
+  errors=0;retryAfter=DateTimeOffset.MinValue;
   if(resetReader&&!busy){reader.Dispose();resetReader=false;}
   lastLive="";SelectEntry(null);ApplyLanguage();RefreshHistory();
  }
@@ -71,20 +73,35 @@ public partial class DialogueWindow : Window
  }
  void RunSafe(Action action){try{action();}catch(Exception ex){MessageBox.Show(this,ex.Message,T("操作未完成","操作未完成","Action not completed"),MessageBoxButton.OK,MessageBoxImage.Warning);}}
  void SetToggle()=>ToggleButton.Content=paused?T("继续读取","繼續讀取","Resume"):T("暂停读取","暫停讀取","Pause");
- void Toggle(object sender,RoutedEventArgs e){paused=!paused;errors=0;SetToggle();Status.Text=paused?T("已暂停，仍可编辑和导出","已暫停，仍可編輯與匯出","Paused; editing and export remain available"):T("正在连接","正在連接","Connecting");}
+ void Toggle(object sender,RoutedEventArgs e){paused=!paused;errors=0;retryAfter=DateTimeOffset.MinValue;SetToggle();Status.Text=paused?T("已暂停，仍可编辑和导出","已暫停，仍可編輯與匯出","Paused; editing and export remain available"):T("正在连接","正在連接","Connecting");}
  async Task Poll()
  {
-  if(busy||closing||paused)return;
+  if(busy||closing||paused||DateTimeOffset.UtcNow<retryAfter)return;
   if(string.IsNullOrWhiteSpace(gamePath)){Status.Text=T("请先在安装器中选择游戏目录","請先在安裝工具中選擇遊戲目錄","Choose the game folder in the patcher first");return;}
   busy=true;var path=gamePath;var ticket=generation;
   try
   {
-   var result=await Task.Run(()=>reader.Poll(path));if(closing||ticket!=generation)return;errors=0;if(paused)return;
+   var result=await Task.Run(()=>reader.Poll(path));if(closing||ticket!=generation)return;errors=0;retryAfter=DateTimeOffset.MinValue;if(paused)return;
    Status.Text=result.Samples.Count>0?T("游戏实况 · ","遊戲實況 · ","Live game · ")+result.Samples[0].FieldId:result.Status.Contains("尚未支持")?T("当前对白类型尚未支持","目前對白類型尚未支援","This dialogue type is not supported yet"):T("等待游戏对白","等待遊戲對白","Waiting for game dialogue");Status.ToolTip=result.Status;
    if(result.Samples.Count==0){lastLive="";Live.Text=T("历史记录已保留，可继续校对。","歷史記錄已保留，可繼續校對。","History is retained; you can continue reviewing.");return;}
    Live.Text=string.Join("\n",result.Samples.Select(s=>$"{s.Speaker}：{s.Text}"));foreach(var sample in result.Samples)AcceptSample(sample);
   }
-  catch(Exception ex){if(closing)return;errors++;lastLive="";Status.ToolTip=ex.Message;Status.Text=T("读取暂不可用，草稿不受影响","讀取暫不可用，草稿不受影響","Reading unavailable; drafts are safe");if(errors>=2||ex is NotSupportedException){paused=true;SetToggle();reader.Dispose();Status.Text=T("读取已暂停，请查看原因后点击继续读取：","讀取已暫停，請查看原因後點選繼續讀取：","Reading paused. Check the reason before resuming: ")+ex.Message;}}
+  catch(Exception ex)
+  {
+   if(closing||ticket!=generation)return;
+   lastLive="";Status.ToolTip=ex.Message;reader.Dispose();
+   if(ex is NotSupportedException)
+   {
+    paused=true;SetToggle();Status.Text=T("游戏版本或读取布局不受支持，已停止读取：","遊戲版本或讀取配置不受支援，已停止讀取：","Unsupported game build or reader layout; reading stopped: ")+ex.Message;
+   }
+   else
+   {
+    errors=Math.Min(errors+1,4);
+    var seconds=Math.Min(1<<Math.Max(0,errors-1),8);
+    retryAfter=DateTimeOffset.UtcNow.AddSeconds(seconds);
+    Status.Text=T($"读取暂不可用，{seconds} 秒后自动重试；草稿不受影响",$"讀取暫不可用，{seconds} 秒後自動重試；草稿不受影響",$"Reading unavailable; retrying in {seconds}s. Drafts are safe.");
+   }
+  }
   finally{busy=false;if(closing||resetReader){reader.Dispose();resetReader=false;}}
  }
  void AcceptSample(DialogueSample sample)
