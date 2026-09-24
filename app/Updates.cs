@@ -5,7 +5,7 @@ using System.Text.Json;
 namespace ZephyrPatcher;
 public static class Updates
 {
- public const string Current="0.4.9";
+ public const string Current="0.4.10";
  public static int Compare(string a,string b)
  {
   static (int[] Core,string[] Pre) Parse(string s){var p=s.TrimStart('v').Split('-',2);var core=p[0].Split('.').Select(int.Parse).ToArray();if(core.Length!=3)throw new FormatException();return(core,p.Length==2?p[1].Split('.'):[]);}

@@ -6,12 +6,17 @@ from video_crypto import encrypt_video,decrypt_video
 def sha(data):return hashlib.sha256(data).hexdigest()
 def seal():
  pins=runpy.run_path(str(P/'engine/trusted_payload.py'))['PAYLOADS']
+ compatibility=json.loads((P/'scripts/video_compatibility.json').read_text(encoding='utf8'))
  updates=[]
  for lang,files in pins.items():
   root=P/'payload'/lang
   for name,h in files.items():
    if sha((root/name).read_bytes())!=h:raise ValueError('Payload hash mismatch: '+lang+'/'+name)
   patch=json.loads(gzip.decompress((root/'patch.json.gz').read_bytes()))
+  required=compatibility['109']['languages'][lang]['sha256']
+  targets=[e for f in patch['files'] for e in f.get('videos',[]) if e.get('media_index')==109]
+  if len(targets)!=1 or targets[0]['sha256']!=required:
+   raise ValueError('109 '+lang+' 未使用已认可的兼容视频；请先更新并封存视频 payload，不能发布旧编码。')
   changed=False
   for item in patch['files']:
    for edit in item.get('videos',[]):

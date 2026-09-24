@@ -1,5 +1,11 @@
 # 本地视频语言包（0.4.7）
 
+## 109 播放兼容性修复（2026-09-24）
+
+109 三语言使用 VP8、15 fps、1341 帧、89.4 秒；每 45 帧（3 秒）固定关键帧，lag-in-frames=0、auto-alt-ref=0、error-resilient=1，原 Vorbis 音轨保持。简体已由用户在游戏中确认原 24—26 秒附近花屏消失；繁体和英文使用同参数，游戏内效果仍待分别确认。
+
+`scripts/video_compatibility.json` 固定三份兼容片源的 SHA-256。工作台与命令行构建均经 `package_payloads.py` 检查对应语言的 109，旧片源会被拒绝，不能只更新视频目录而跳过资源包、catalog 与固定哈希重新封存。正式安装只用加密 payload，维护视频不随包裸放。
+
 已接入 060、083、109。维护源位于相邻项目的 `translation/full_localization_v1/media/video/`，文件名为 `060.zh-Hans.webm`、`060.zh-Hant.webm`、`060.en.webm`，另两段同理。无语言后缀的文件始终保留为原片。060 英文原本就是英文，英文补丁从原版 bundle 重建并保留该片，不追加重复数据。
 
 ## 安装与切换

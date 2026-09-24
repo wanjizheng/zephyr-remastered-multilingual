@@ -1,0 +1,26 @@
+{
+  "109": {
+    "profile": "vp8-g45-lag0-error-resilient1",
+    "fps": 15,
+    "frames": 1341,
+    "duration_seconds": 89.4,
+    "keyframe_interval_seconds": 3,
+    "languages": {
+      "zh-Hans": {
+        "sha256": "1916348ac12926a0ab02fb1aa32955a82cbda8c2fafac7ca0671873b86af0411",
+        "bytes": 49213058,
+        "in_game_verified": true
+      },
+      "zh-Hant": {
+        "sha256": "4a07cff046490ebde90f1bba3cc4f27841188449a04c6ad6854d145cdf2296e5",
+        "bytes": 48629069,
+        "in_game_verified": false
+      },
+      "en": {
+        "sha256": "02dbff52c76f0aea92f047f3e959687cf2002bd0e7caa8bb25312130d2999bc2",
+        "bytes": 49625139,
+        "in_game_verified": false
+      }
+    }
+  }
+}

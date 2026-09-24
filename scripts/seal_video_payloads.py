@@ -28,7 +28,10 @@ for lang in ['zh-Hans','zh-Hant','en']:
  hashrow=next(r for r in patch['files'] if r['kind']=='catalog_hash');hp=stage/hashrow['path'];hp.write_text(spooky.hash128(bytes(raw)).to_bytes(16,'little').hex(),encoding='ascii');hashrow['after_sha256']=sha(hp)
  for r in patch['files']:assert sha(stage/r['path'])==r['after_sha256']
  (payload/'patch.json.gz').write_bytes(gzip.compress(json.dumps(patch,ensure_ascii=False,separators=(',',':')).encode(),mtime=0))
- pins[lang]={str(p.relative_to(payload)).replace('\\','/'):sha(p) for p in payload.rglob('*') if p.is_file() and p.name!='patch.unsealed.json'}
+ names={'patch.json.gz','glyphs.zip'}
+ if (payload/'auto-glyphs.zip').exists():names.add('auto-glyphs.zip')
+ names.update(e['payload'] for f in patch['files'] for e in f.get('videos',[]))
+ pins[lang]={name:sha(payload/name) for name in sorted(names)}
  report[lang]=dict(movie_sha256=digest,native_crc=crc,embedded_videos_exact=True,untouched_objects_exact=True,original_resource_prefix_exact=True,all_staged_files_sha256_match=True,english_060_original=lang=='en',runtime_playback_verified=False)
 # Promote only after every language is sealed successfully; retain pre-change payloads.
 for lang in pins:

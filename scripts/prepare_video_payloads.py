@@ -40,7 +40,7 @@ for lang,patch in patches.items():
  out=candidate/relative;rebuild_videos(original/relative,out,item,payload);item['after_sha256']=sha(out)
  patch['files']=[r for r in patch['files'] if r['path']!=relative]
  patch['files'].insert(next(i for i,r in enumerate(patch['files']) if r['kind']=='catalog'),item)
- patch['version']='0.4.7';patch['video_localization']={'indices':[60,83,109],'english_060':'original'}
+ patch['video_localization']={'indices':[60,83,109],'english_060':'original'}
  (payload/'patch.unsealed.json').write_text(json.dumps(patch,ensure_ascii=False,indent=2),encoding='utf8')
  requests.append(str(out.resolve()));print('Prepared',lang,item['after_sha256'],flush=True)
 (a.work/'crc.request').write_text('\n'.join(requests)+'\n',encoding='utf8')
