@@ -1,5 +1,7 @@
 # 开发与发行
 
+0.4.7 本地视频接入流程见 [视频语言包](docs/video-localization.md)。视频输入被 Git 忽略，但本地构建必须完整包含对应语言的视频 payload，并通过构建前哈希核对。
+
 维护者需要 Windows、.NET 10 SDK、Python 3.14；玩家不需要这些工具。建议创建独立 Python 虚拟环境后安装 `requirements.txt`。完整传递依赖版本见 `dependency-versions.json`。
 
 ```powershell

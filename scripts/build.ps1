@@ -1,6 +1,8 @@
 param([Parameter(Mandatory=$true)][string]$OutputDirectory)
 $ErrorActionPreference = 'Stop'
 $project = Split-Path $PSScriptRoot -Parent
+python "$project/scripts/check_payload_inputs.py"
+if ($LASTEXITCODE -ne 0) { throw 'Payload inputs are missing or changed. Prepare and seal the local video payloads before building.' }
 $out = [IO.Path]::GetFullPath($OutputDirectory)
 if ($out.StartsWith($project + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Build outside the public source directory.' }
 if (Test-Path -LiteralPath $out) { throw 'Choose a new output directory.' }

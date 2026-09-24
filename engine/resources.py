@@ -5,6 +5,7 @@ import UnityPy
 import spooky
 from patch_data import apply_ops,texture_pixels
 from catalog import Catalog
+from video_resources import rebuild_videos
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def safe(root,relative):
  root=Path(root).resolve();path=(root/relative).resolve()
@@ -34,6 +35,7 @@ def rebuild(original,out,patch,payload,verify_output=True):
     obj.save_typetree(tree,nodes=node)
    if src.suffix=='.bundle':env.save(pack='lz4',out_path=str(dst.parent))
    else:dst.write_bytes(env.file.save())
+  elif item['kind']=='video_bundle':rebuild_videos(src,dst,item,payload)
   elif item['kind']=='bytes':
    raw=bytearray(src.read_bytes())
    for edit in item['edits']:

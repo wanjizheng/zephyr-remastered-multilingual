@@ -19,3 +19,5 @@ private/
 *.key
 *-private.pem
 release-private.pem
+# Local video payloads contain game imagery; retain locally, never commit.
+payload/*/videos/*.webm
