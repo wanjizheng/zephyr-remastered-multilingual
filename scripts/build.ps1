@@ -1,6 +1,8 @@
 param([Parameter(Mandatory=$true)][string]$OutputDirectory)
 $ErrorActionPreference = 'Stop'
 $project = Split-Path $PSScriptRoot -Parent
+python "$project/scripts/package_payloads.py"
+if ($LASTEXITCODE -ne 0) { throw 'Encrypted video preparation failed.' }
 python "$project/scripts/check_payload_inputs.py"
 if ($LASTEXITCODE -ne 0) { throw 'Payload inputs are missing or changed. Prepare and seal the local video payloads before building.' }
 $out = [IO.Path]::GetFullPath($OutputDirectory)
@@ -15,9 +17,8 @@ dotnet publish "$project/app/ZephyrPatcher.csproj" -c Release -r win-x64 --self-
 if ($LASTEXITCODE -ne 0) { throw 'Application build failed' }
 $releasePayload = Join-Path $release 'payload'
 New-Item -ItemType Directory -Path $releasePayload | Out-Null
-foreach ($locale in @('zh-Hans', 'zh-Hant', 'en')) {
- Copy-Item -LiteralPath (Join-Path "$project/payload" $locale) -Destination $releasePayload -Recurse
-}
+python "$project/scripts/package_payloads.py" --output $releasePayload
+if ($LASTEXITCODE -ne 0) { throw 'Release payload packaging failed.' }
 Copy-Item -LiteralPath "$project/licenses" -Destination $release -Recurse
 Copy-Item -LiteralPath "$project/THIRD_PARTY_NOTICES.md" -Destination $release
 Copy-Item -LiteralPath "$project/LICENSE" -Destination $release

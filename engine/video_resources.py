@@ -3,6 +3,7 @@ import hashlib
 from pathlib import Path
 import UnityPy
 from UnityPy.streams import EndianBinaryReader
+from video_crypto import decrypt_video
 
 def rebuild_videos(src, dst, item, payload):
  env=UnityPy.load(str(src))
@@ -22,6 +23,8 @@ def rebuild_videos(src, dst, item, payload):
   root=Path(payload).resolve();path=(root/edit['payload']).resolve()
   if not path.is_relative_to(root):raise ValueError('非法视频数据路径')
   video=path.read_bytes()
+  if edit.get('encoding')=='aes-256-gcm-v1':video=decrypt_video(video,edit['sha256'])
+  elif edit.get('encoding'):raise ValueError('未知视频编码')
   if hashlib.sha256(video).hexdigest()!=edit['sha256']:raise ValueError('本地化视频校验失败')
   external['m_Offset']=len(data);external['m_Size']=len(video);data.extend(video)
   obj.save_typetree(tree)
