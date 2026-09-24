@@ -1,0 +1,39 @@
+{
+  "text_fields": 698,
+  "languages": {
+    "zh-Hans": {
+      "text_fields": 34,
+      "name_scene_targets": 12,
+      "payload_sha256": "bcca49e4d4ca2b6edc8e27c5c8594cd4593cd261a18a6bad7f27de3d4ee9c7e0",
+      "resource_files": 21
+    },
+    "zh-Hant": {
+      "text_fields": 34,
+      "name_scene_targets": 12,
+      "payload_sha256": "c82288c96f1358e2492813e165924a5e9ab1ee1d744fc44a9b6abcc8e64beb4e",
+      "resource_files": 21
+    },
+    "en": {
+      "text_fields": 630,
+      "name_scene_targets": 12,
+      "payload_sha256": "daf1b6100c429345ef8da3158cf565f846c4e03f827238e099a482bb80c3be51",
+      "resource_files": 21
+    }
+  },
+  "name_scenes": 12,
+  "name_language_targets": 36,
+  "native_sprite_validation": {
+    "passed": true,
+    "sprites_compared": 594,
+    "native_subasset_load": true,
+    "shared_textures": true,
+    "gameplay_verified": false
+  },
+  "ordinary_and_upscaled_visual_data_unchanged": true,
+  "before_reveal_shared_name_unchanged": true,
+  "gameplay_verified": false,
+  "game_files_written": false,
+  "source_only": true,
+  "original_inputs": "F:\\MyProject\\西风狂诗曲\\Zephyr-Chinese-Patcher\\private\\review-r2-original",
+  "r2_baseline_sha256": "7a5b7121a97e6e650a18fcd4e0c361d23cab9d10ed6cb836a485f88c4bd35101"
+}
