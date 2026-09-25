@@ -1,0 +1,125 @@
+{
+  "zh-Hans": {
+    "payload_sha256": "d8f8e758dd811425da1c2a2697b3ce1d382e5dbd31da302a0f6f2211c99d0110",
+    "metadata_sha256": "6e06da72dfd20388bd15c2db3f0065a3714963eca2d0626b0a6d263cb6b81ef2",
+    "literals": [
+      {
+        "index": 21167,
+        "expected_sha256": "4c490f1ca1d756f81cf65bd67d61f01ca8c68fb5fb1edbc9c0de5ee7e6c50611",
+        "text": "否"
+      },
+      {
+        "index": 21171,
+        "expected_sha256": "2eb73fba696e2fe4ea0a206ed3d21758e35c7594905d6181d9c34ff19556b17a",
+        "text": "是"
+      },
+      {
+        "index": 21181,
+        "expected_sha256": "d3a3d15c932c6765b156a61249eaf48d12911989ae128ebc8a260ad27fa374bb",
+        "text": "是否继承此前的通关记录（已通关{0}次），/n开始新游戏？"
+      },
+      {
+        "index": 21182,
+        "expected_sha256": "5c3ba6349ddb726a6f0e78aadc32649a0022f8a0dfc66f019261b0ec7586ebe5",
+        "text": "不继承此前的通关记录，/n从头开始新游戏。"
+      },
+      {
+        "index": 21184,
+        "expected_sha256": "d7767cb6bf54f22bc8895b2b53ca7465452a4ef64adc54ac3abe158fc1446f9f",
+        "text": "继承已保存的ELD、物品和装备，/n开始新游戏。"
+      },
+      {
+        "index": 21196,
+        "expected_sha256": "07c4564fa8f0658a609164e33ea717c6462b05187227a1cb9db7e36b03572842",
+        "text": "从头开始新游戏。"
+      },
+      {
+        "index": 21199,
+        "expected_sha256": "a64d5ac9449f4f48366a4bebf0ee8ae03f5ce7a0c055659d152030a31b4fdb7a",
+        "text": "从最近的存档继续游戏。"
+      }
+    ]
+  },
+  "zh-Hant": {
+    "payload_sha256": "d19f9259d9d68ff8ebfeb34b64942528dd15e33ae040e0b96575abf2a98c1702",
+    "metadata_sha256": "f5ea5e45885d56ea042f9829d51a439017bc8984df7ebdbcbdee8112d09ecef5",
+    "literals": [
+      {
+        "index": 21167,
+        "expected_sha256": "4c490f1ca1d756f81cf65bd67d61f01ca8c68fb5fb1edbc9c0de5ee7e6c50611",
+        "text": "否"
+      },
+      {
+        "index": 21171,
+        "expected_sha256": "2eb73fba696e2fe4ea0a206ed3d21758e35c7594905d6181d9c34ff19556b17a",
+        "text": "是"
+      },
+      {
+        "index": 21181,
+        "expected_sha256": "d3a3d15c932c6765b156a61249eaf48d12911989ae128ebc8a260ad27fa374bb",
+        "text": "是否繼承此前的通關記錄（已通關{0}次），/n開始新遊戲？"
+      },
+      {
+        "index": 21182,
+        "expected_sha256": "5c3ba6349ddb726a6f0e78aadc32649a0022f8a0dfc66f019261b0ec7586ebe5",
+        "text": "不繼承此前的通關記錄，/n從頭開始新遊戲。"
+      },
+      {
+        "index": 21184,
+        "expected_sha256": "d7767cb6bf54f22bc8895b2b53ca7465452a4ef64adc54ac3abe158fc1446f9f",
+        "text": "繼承已儲存的ELD、物品和裝備，/n開始新遊戲。"
+      },
+      {
+        "index": 21196,
+        "expected_sha256": "07c4564fa8f0658a609164e33ea717c6462b05187227a1cb9db7e36b03572842",
+        "text": "從頭開始新遊戲。"
+      },
+      {
+        "index": 21199,
+        "expected_sha256": "a64d5ac9449f4f48366a4bebf0ee8ae03f5ce7a0c055659d152030a31b4fdb7a",
+        "text": "從最近的存檔繼續遊戲。"
+      }
+    ]
+  },
+  "en": {
+    "payload_sha256": "63f784c97c99ed90eb849597a4b99e65d6321dce42ff4064e3a7c00280c55549",
+    "metadata_sha256": "375f297576af34dcbc9e3550dffda918e33707407f6a7646587fff671a01f519",
+    "literals": [
+      {
+        "index": 21167,
+        "expected_sha256": "4c490f1ca1d756f81cf65bd67d61f01ca8c68fb5fb1edbc9c0de5ee7e6c50611",
+        "text": "No"
+      },
+      {
+        "index": 21171,
+        "expected_sha256": "2eb73fba696e2fe4ea0a206ed3d21758e35c7594905d6181d9c34ff19556b17a",
+        "text": "Yes"
+      },
+      {
+        "index": 21181,
+        "expected_sha256": "d3a3d15c932c6765b156a61249eaf48d12911989ae128ebc8a260ad27fa374bb",
+        "text": "Carry over your clear data ({0} completions)/nand start a new game?"
+      },
+      {
+        "index": 21182,
+        "expected_sha256": "5c3ba6349ddb726a6f0e78aadc32649a0022f8a0dfc66f019261b0ec7586ebe5",
+        "text": "Start a new game/nwithout carrying over clear data."
+      },
+      {
+        "index": 21184,
+        "expected_sha256": "d7767cb6bf54f22bc8895b2b53ca7465452a4ef64adc54ac3abe158fc1446f9f",
+        "text": "Start a new game with saved ELD,/nitems, and equipment."
+      },
+      {
+        "index": 21196,
+        "expected_sha256": "07c4564fa8f0658a609164e33ea717c6462b05187227a1cb9db7e36b03572842",
+        "text": "Start a new game from the beginning."
+      },
+      {
+        "index": 21199,
+        "expected_sha256": "a64d5ac9449f4f48366a4bebf0ee8ae03f5ce7a0c055659d152030a31b4fdb7a",
+        "text": "Continue from the most recent save."
+      }
+    ]
+  }
+}

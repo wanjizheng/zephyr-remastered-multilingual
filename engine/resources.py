@@ -12,6 +12,35 @@ def safe(root,relative):
  root=Path(root).resolve();path=(root/relative).resolve()
  if not path.is_relative_to(root) or path==root:raise ValueError('路径超出游戏目录')
  return path
+def replace_metadata_literals(raw,edits):
+ """Replace IL2CPP UTF-8 literals while retaining every metadata section offset."""
+ table,table_bytes,count=struct.unpack_from('<iii',raw,8)
+ data,data_bytes,_=struct.unpack_from('<iii',raw,20)
+ offsets=list(struct.unpack_from('<'+str(count)+'I',raw,table))
+ if table_bytes!=count*4 or offsets[0]!=0 or offsets[-1]!=data_bytes:
+  raise ValueError('Unknown metadata literal layout')
+ replacements={}
+ for edit in edits:
+  index=edit['index']
+  if not 0<=index<count-1 or index in replacements:raise ValueError('Invalid literal index')
+  old=raw[data+offsets[index]:data+offsets[index+1]]
+  if hashlib.sha256(old).hexdigest()!=edit['expected_sha256']:raise ValueError('Metadata literal changed')
+  replacements[index]=edit['text'].encode('utf8')
+ parts=[];new_offsets=[0]
+ for index in range(count-1):
+  part=replacements.get(index,raw[data+offsets[index]:data+offsets[index+1]])
+  parts.append(part);new_offsets.append(new_offsets[-1]+len(part))
+ joined=b''.join(parts)
+ if len(joined)>data_bytes:raise ValueError('Metadata literal pool overflow')
+ result=bytearray(raw)
+ result[data:data+data_bytes]=joined+b'\0'*(data_bytes-len(joined))
+ struct.pack_into('<'+str(count)+'I',result,table,*new_offsets)
+ if len(result)!=len(raw):raise ValueError('Metadata size changed')
+ for index in range(count-1):
+  actual=result[data+new_offsets[index]:data+new_offsets[index+1]]
+  expected=replacements.get(index,raw[data+offsets[index]:data+offsets[index+1]])
+  if actual!=expected:raise ValueError('Metadata literal readback failed')
+ return result
 def rebuild(original,out,patch,payload,verify_output=True):
  cache={}
  def schema(spec):
@@ -44,6 +73,7 @@ def rebuild(original,out,patch,payload,verify_output=True):
    for edit in item['edits']:
     a=edit['offset'];b=a+edit['old_length'];replacement=edit['text'].encode('utf8')
     assert len(replacement)==b-a and hashlib.sha256(raw[a:b]).hexdigest()==edit['expected_sha256'];raw[a:b]=replacement
+   if item.get('literal_edits'):raw=replace_metadata_literals(raw,item['literal_edits'])
    dst.write_bytes(raw)
   elif item['kind']=='catalog':
    raw=bytearray(src.read_bytes());entries=Catalog(raw).bundles()
