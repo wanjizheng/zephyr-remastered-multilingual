@@ -3,7 +3,7 @@ import argparse,contextlib,gzip,hashlib,json,os,re,shutil,subprocess,sys,uuid
 from pathlib import Path
 from resources import rebuild,safe,sha
 from trusted_payload import PAYLOADS
-VERSION='0.5.1'
+VERSION='0.5.2'
 WORK_DIRS={'backup':'b','staging':'s','rollback':'t','verification':'v'}
 def workdir(home,kind,token=None):
  if token is not None:return home/WORK_DIRS[kind]/token
