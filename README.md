@@ -32,9 +32,18 @@
 
 从地图上的人名与战况，到战术说明字幕，再到随旗帜展开的滚动演说，这三段动画里的信息终于可以和对白一起读懂。剧情走到关键处，不必再对着陌生的文字猜它在说什么。
 
-| 地图与战况 · 简体示例 | 战术说明 · 繁體示例 | 演说文字 · English example |
-| :---: | :---: | :---: |
-| [![地图动画中的人名与战况已译为简体中文](docs/screenshots/cinematics/060-zh-Hans.jpg)](docs/screenshots/cinematics/060-zh-Hans.jpg) | [![战术动画中的地图标记和说明字幕已译为繁体中文](docs/screenshots/cinematics/083-zh-Hant.jpg)](docs/screenshots/cinematics/083-zh-Hant.jpg) | [![English text in the flag-and-speech cinematic](docs/screenshots/cinematics/109-en.jpg)](docs/screenshots/cinematics/109-en.jpg) |
+<table>
+<tr>
+<th width="33%">地图与战况<br><sub>简体中文</sub></th>
+<th width="33%">战术说明<br><sub>繁體中文</sub></th>
+<th width="33%">滚动演说<br><sub>English</sub></th>
+</tr>
+<tr>
+<td><a href="docs/screenshots/cinematics/060-zh-Hans.jpg"><img src="docs/screenshots/cinematics/060-zh-Hans.jpg" width="320" alt="地图动画中的人名与战况已译为简体中文"></a></td>
+<td><a href="docs/screenshots/cinematics/083-zh-Hant.jpg"><img src="docs/screenshots/cinematics/083-zh-Hant.jpg" width="320" alt="战术动画中的地图标记和说明字幕已译为繁体中文"></a></td>
+<td><a href="docs/screenshots/cinematics/109-en.jpg"><img src="docs/screenshots/cinematics/109-en.jpg" width="320" alt="English text in the flag-and-speech cinematic"></a></td>
+</tr>
+</table>
 
 <sub>以上为本次发行所用动画片源的截帧，含少量剧情画面；点击可查看大图。三段动画均覆盖三种语言。英文版中原本就是英文的地图片段保留原文。</sub>
 
