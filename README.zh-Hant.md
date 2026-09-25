@@ -8,7 +8,7 @@
 
 免費、非官方的三語翻譯補丁 · 劇情動畫文字本地化 · 邊玩邊校對
 
-[**下載最新版本**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest) · [**參與對白校對**](docs/dialogue-review.md) · [支持正版](https://store.steampowered.com/app/5099430/)
+[**下載最新版本**](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest) · [**參與對白校對**](docs/dialogue-review.md) · [支持正版](https://store.steampowered.com/app/5099430/)
 
 [简体中文](README.md) · 繁體中文 · [English](README.en.md)
 
@@ -38,7 +38,7 @@
 
 需要 **Windows 10／11 x64**，以及已安裝的 Steam 正版遊戲。對應 Steam App **5099430**、Build **25418345**；工具會核對資源版本。
 
-1. 從 [最新發行頁](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest) 下載 **`Zephyr-Chinese-Patcher-*.zip`**，請勿把 GitHub 自動產生的 `Source code` 當作安裝包。
+1. 從 [最新發行頁](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest) 下載 **`Zephyr-Chinese-Patcher-*.zip`**，請勿把 GitHub 自動產生的 `Source code` 當作安裝包。
 2. 完整解壓縮，執行 `ZephyrChinesePatcher.exe`。保留旁邊的 `tools`、`payload` 和授權檔案；不必另外安裝 .NET、Python 或 Unity。
 3. 儲存進度並完全關閉遊戲。選擇右上角的 **TW**，指定包含 `ZephyrRemastered.exe` 的資料夾後安裝。
 4. 完成後啟動遊戲。切換語言時，退出遊戲、選擇 **CN／TW／EN**，再安裝一次。恢復原版請使用工具中的 **Steam 驗證**入口。
@@ -60,7 +60,7 @@
 
 **遇到一句 → 寫下建議 → 匯出修改包 → 提交給維護者 → 審閱採用後進入後續更新。**
 
-[**查看操作教學**](docs/dialogue-review.md) · [**提交翻譯建議**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new?template=translation.yml)
+[**查看操作教學**](docs/dialogue-review.md) · [**提交翻譯建議**](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues/new?template=translation.yml)
 
 > **關閉前請先匯出。** 校對記錄只保留在目前視窗的工作階段；建議不會立即修改遊戲或自動上傳。部分台詞可能無法定位，也歡迎附截圖及前後語境回報。
 
@@ -70,7 +70,7 @@
 
 動畫文字完成的範圍是上述三段，未列出的片段與原作美術字不在此承諾內。三語資源均通過離線重建校驗；演說動畫的簡體播放相容性已獲遊戲內確認，繁體及英文的遊戲內播放與排版仍歡迎回報。
 
-請到 [Issues](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues) 提供工具版本、遊戲版本、場景、重現步驟與截圖。對白問題請附前後文；請勿上傳完整遊戲資源、存檔、帳號資訊或含個人路徑的整份記錄。
+請到 [Issues](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues) 提供工具版本、遊戲版本、場景、重現步驟與截圖。對白問題請附前後文；請勿上傳完整遊戲資源、存檔、帳號資訊或含個人路徑的整份記錄。
 
 <details>
 <summary><strong>更新、空間與安裝問題</strong></summary>

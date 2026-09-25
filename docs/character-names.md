@@ -36,7 +36,7 @@
 - **卡特琳娜 / 佧他丽娜**来自旧玩家表的 `Kathrine` 项，作为旧名线索保留，仍需要旧版画面进一步核对。
 - **“待核”不是漏译标记**：这些行已经有本项目的新译名，缺的是可信的旧版中文对应。
 
-欢迎在 [Issues](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues) 补充旧版姓名截图和版本信息。请说明简／繁体版本、发行方或光盘信息（若知道）；不要上传整部游戏。
+欢迎在 [Issues](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues) 补充旧版姓名截图和版本信息。请说明简／繁体版本、发行方或光盘信息（若知道）；不要上传整部游戏。
 
 ## 完整人物译名对照
 

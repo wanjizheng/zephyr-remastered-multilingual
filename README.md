@@ -6,11 +6,11 @@
 
 让记忆里的冒险再次启程。
 
-[![Release](https://img.shields.io/github/v/release/wanjizheng/zephyr-remastered-zh-cn?style=flat-square&label=Release&color=8f3d35)](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest) ![Windows 10 / 11 x64](https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-596b75?style=flat-square) ![CN / TW / EN](https://img.shields.io/badge/Languages-CN%20%C2%B7%20TW%20%C2%B7%20EN-8a704b?style=flat-square)
+[![Release](https://img.shields.io/github/v/release/wanjizheng/zephyr-remastered-multilingual?style=flat-square&label=Release&color=8f3d35)](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest) ![Windows 10 / 11 x64](https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-596b75?style=flat-square) ![CN / TW / EN](https://img.shields.io/badge/Languages-CN%20%C2%B7%20TW%20%C2%B7%20EN-8a704b?style=flat-square)
 
 免费、非官方的三语翻译补丁 · 剧情动画文字本地化 · 边玩边校对
 
-[**下载最新版本**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest)　 / 　[**查看动画效果**](#关键动画也能读懂了)　 / 　[**参与对白校对**](#边玩边校对)　 / 　[支持正版](https://store.steampowered.com/app/5099430/)
+[**下载最新版本**](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest)　 / 　[**查看动画效果**](#关键动画也能读懂了)　 / 　[**参与对白校对**](#边玩边校对)　 / 　[支持正版](https://store.steampowered.com/app/5099430/)
 
 简体中文 · [繁體中文](README.zh-Hant.md) · [English](README.en.md)
 
@@ -62,7 +62,7 @@
 
 **需要 Windows 10／11 x64，以及已安装的 Steam 正版游戏。** 当前对应 Steam App `5099430`、游戏 Build `25418345`；工具会核对资源版本。
 
-1. 从 [最新发行页](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest) 下载 **`Zephyr-Chinese-Patcher-*.zip`**。选择安装包，别把 GitHub 的 `Source code` 当作安装包。
+1. 从 [最新发行页](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest) 下载 **`Zephyr-Chinese-Patcher-*.zip`**。选择安装包，别把 GitHub 的 `Source code` 当作安装包。
 2. **完整解压**，运行 `ZephyrChinesePatcher.exe`。保留同目录的 `tools`、`payload` 和许可文件；无需另外安装 .NET、Python 或 Unity。
 3. 保存进度并完全退出游戏，选择包含 `ZephyrRemastered.exe` 的游戏目录，再选择右上角的语言。
 4. 点击安装，等待完成后启动游戏。切换语言时，退出游戏、选择另一种语言，再安装一次即可。
@@ -92,7 +92,7 @@
 
 可识别的台词会自动带上定位与版本信息，最近 20 句方便回看，已修改条目单独保留。你也可以只说明哪里不对，让大家一起讨论更好的表达。
 
-[**查看中文教程**](docs/dialogue-review.md) · [**English tutorial**](docs/dialogue-review.en.md) · [**提交翻译建议**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new?template=translation.yml)
+[**查看中文教程**](docs/dialogue-review.md) · [**English tutorial**](docs/dialogue-review.en.md) · [**提交翻译建议**](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues/new?template=translation.yml)
 
 > **关闭前请导出。** 校对记录只保留在当前窗口会话中；建议不会立即修改游戏或自动上传。部分台词可能无法定位，遇到漏句也可以附截图和前后语境反馈。
 
@@ -175,7 +175,7 @@
 
 ## 一起把它打磨好
 
-发现问题，欢迎到 [Issues](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues) 留下 **工具版本、游戏版本、发生地点、复现步骤与必要截图**。对白问题请附前后语境；显示问题请说明分辨率和缩放。请勿上传完整游戏资源、存档、账号信息或含个人路径的整份日志。
+发现问题，欢迎到 [Issues](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues) 留下 **工具版本、游戏版本、发生地点、复现步骤与必要截图**。对白问题请附前后语境；显示问题请说明分辨率和缩放。请勿上传完整游戏资源、存档、账号信息或含个人路径的整份日志。
 
 感谢原作与重制团队留下这个世界，也感谢字体作者和每一位提供反馈的玩家。如果你也喜欢它，请购买并支持 [Steam 正版](https://store.steampowered.com/app/5099430/)。
 

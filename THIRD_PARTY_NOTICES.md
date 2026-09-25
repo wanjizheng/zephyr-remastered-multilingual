@@ -12,6 +12,6 @@
 - **PyInstaller**，GPL 与允许封装应用发行的 bootloader exception；本应用源码不因此改用 GPL。完整例外见对应许可。
 - Python 依赖包括 NumPy、Pillow、lz4、Brotli、texture2ddecoder、etcpak、astc-encoder-py、fmod_toolkit、fsspec、attrs、tpk_ar、archspec、pyfmodex、Spooky、setuptools、packaging；各自及内嵌压缩／纹理解码库的版权和许可见 `licenses/python/` 与打包运行时附带声明。
 
-确切构建版本列在公开源码仓库的 `dependency-versions.json`（https://github.com/wanjizheng/zephyr-remastered-zh-cn）。运行依赖不包含游戏 FMOD 音频库，也没有从玩家游戏目录复制可执行代码进发行包。
+确切构建版本列在公开源码仓库的 `dependency-versions.json`（https://github.com/wanjizheng/zephyr-remastered-multilingual）。运行依赖不包含游戏 FMOD 音频库，也没有从玩家游戏目录复制可执行代码进发行包。
 
 字体字形数据是原字体派生的数据，遵循各自 OFL；请勿单独出售字体，衍生修改与命名遵守对应许可。本项目没有获得游戏原作的版权或商标授权。

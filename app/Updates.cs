@@ -16,17 +16,17 @@ public static class Updates
  public static async Task<string?> Check()
  {
   using var http=new HttpClient{Timeout=TimeSpan.FromSeconds(12)};http.DefaultRequestHeaders.UserAgent.ParseAdd("ZephyrChinesePatcher/0.1");
-  var json=await http.GetStringAsync("https://api.github.com/repos/wanjizheng/zephyr-remastered-zh-cn/releases?per_page=20");using var doc=JsonDocument.Parse(json);
+  var json=await http.GetStringAsync("https://api.github.com/repos/wanjizheng/zephyr-remastered-multilingual/releases?per_page=20");using var doc=JsonDocument.Parse(json);
   foreach(var release in doc.RootElement.EnumerateArray())
   {
    if(release.GetProperty("draft").GetBoolean())continue;string tag=release.GetProperty("tag_name").GetString()!;
    if(!Current.Contains('-')&&release.GetProperty("prerelease").GetBoolean())continue;
    if(Compare(tag,Current)<=0)continue;
    // Fixed owner/repository and signed metadata; never run a remote executable.
-   string root="https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/download/"+Uri.EscapeDataString(tag)+"/";
+   string root="https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/download/"+Uri.EscapeDataString(tag)+"/";
    byte[] metadata=await http.GetByteArrayAsync(root+"release.json"),signature=await http.GetByteArrayAsync(root+"release.sig");
    VerifyMetadata(metadata,signature,tag,ReleaseKey.PublicPem);
-   return "https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/"+Uri.EscapeDataString(tag);
+   return "https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/tag/"+Uri.EscapeDataString(tag);
   }
   return null;
  }

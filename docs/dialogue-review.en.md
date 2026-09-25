@@ -1,6 +1,6 @@
 # Improve the translation while you play
 
-[中文教程](dialogue-review.md) · [Back to the README](../README.md) · [Download the latest release](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest)
+[中文教程](dialogue-review.md) · [Back to the README](../README.md) · [Download the latest release](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest)
 
 A more natural line, a clearer form of address, or a single corrected typo can make the next player's adventure better. You do not need to code or translate an entire chapter. Start with one line you notice while playing. Suggestions for English, Simplified Chinese, and Traditional Chinese are all welcome.
 
@@ -34,7 +34,7 @@ Click **Export suggestions** and save the ZIP. It contains your suggestions, the
 
 ## 5. Share your contribution
 
-Click **Preview issue**, review the text, then choose **Copy and open GitHub**. Select the translation-suggestion form, paste the text, attach your exported ZIP, and submit it yourself. You can also open the [translation-suggestion form directly](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new?template=translation.yml). A GitHub account is needed to submit an issue, but not to use the assistant or export locally.
+Click **Preview issue**, review the text, then choose **Copy and open GitHub**. Select the translation-suggestion form, paste the text, attach your exported ZIP, and submit it yourself. You can also open the [translation-suggestion form directly](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues/new?template=translation.yml). A GitHub account is needed to submit an issue, but not to use the assistant or export locally.
 
 Group related suggestions by scene or issue when convenient. Check existing issues first and add useful context to an existing discussion rather than duplicating it. You may include your preferred attribution name. Alternative phrasing is welcome; acceptance depends on meaning, context, character voice, and consistency across the story.
 

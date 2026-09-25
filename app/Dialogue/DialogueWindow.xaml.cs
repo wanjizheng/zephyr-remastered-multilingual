@@ -160,7 +160,7 @@ public partial class DialogueWindow : Window
   ValidateExport();var body=store.IssueMarkdown(store.Changes());
   var dialog=new Window{Title=T("预览提交 · 不会自动上传","預覽提交 · 不會自動上傳","Preview issue · no automatic upload"),Owner=this,Width=800,Height=640,WindowStartupLocation=WindowStartupLocation.CenterOwner};var dock=new DockPanel{Margin=new Thickness(18)};dialog.Content=dock;
   var button=new Button{Content=T("复制并打开 GitHub","複製並開啟 GitHub","Copy and open GitHub"),Margin=new Thickness(0,10,0,0)};DockPanel.SetDock(button,Dock.Bottom);dock.Children.Add(button);
-  button.Click+=(_,_)=>RunSafe(()=>{Clipboard.SetText(body);Process.Start(new ProcessStartInfo("https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new"){UseShellExecute=true});MessageBox.Show(dialog,T("已复制。请粘贴正文、附上导出包，再在网页提交。","已複製。請貼上內文、附上匯出檔，再於網頁提交。","Copied. Paste into the issue, attach the export, then submit on GitHub."));});
+  button.Click+=(_,_)=>RunSafe(()=>{Clipboard.SetText(body);Process.Start(new ProcessStartInfo("https://github.com/wanjizheng/zephyr-remastered-multilingual/issues/new"){UseShellExecute=true});MessageBox.Show(dialog,T("已复制。请粘贴正文、附上导出包，再在网页提交。","已複製。請貼上內文、附上匯出檔，再於網頁提交。","Copied. Paste into the issue, attach the export, then submit on GitHub."));});
   dock.Children.Add(new TextBox{Text=body,IsReadOnly=true,TextWrapping=TextWrapping.Wrap,VerticalScrollBarVisibility=ScrollBarVisibility.Auto});dialog.ShowDialog();
  });
  public void LoadPreview(DialogueSample sample){AcceptSample(sample);SelectListEntry(store.Entries.Last());Live.Text=sample.Speaker+"："+sample.Text;}

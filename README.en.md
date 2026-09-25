@@ -6,7 +6,7 @@
 
 Simplified Chinese · Traditional Chinese · English
 
-[**Download the latest release**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest) · [**Improve the translation**](docs/dialogue-review.en.md) · [Support the game on Steam](https://store.steampowered.com/app/5099430/)
+[**Download the latest release**](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest) · [**Improve the translation**](docs/dialogue-review.en.md) · [Support the game on Steam](https://store.steampowered.com/app/5099430/)
 
 [简体中文](README.md) · [繁體中文](README.zh-Hant.md) · English
 
@@ -39,7 +39,7 @@ This release also includes:
 
 You need **Windows 10 or 11, x64**, and a legally installed Steam copy of the game. This release targets Steam App **5099430**, Build **25418345**; the patcher checks the supported resource hashes.
 
-1. Download **`Zephyr-Chinese-Patcher-*.zip`** from the [latest release](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest). Choose the installer ZIP rather than GitHub's “Source code” archives.
+1. Download **`Zephyr-Chinese-Patcher-*.zip`** from the [latest release](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest). Choose the installer ZIP rather than GitHub's “Source code” archives.
 2. Extract the entire ZIP and run `ZephyrChinesePatcher.exe`. Keep `tools`, `payload`, and the license files beside it. No separate .NET, Python, or Unity installation is needed.
 3. Save and fully exit the game. Select **EN**, choose the folder containing `ZephyrRemastered.exe`, and install.
 4. Start the game after installation finishes. To change languages, exit the game, select **CN**, **TW**, or **EN**, and install again. To restore the original files, use the patcher's **Steam verification** button.
@@ -61,7 +61,7 @@ The language buttons change both the patcher's interface and the installed game 
 
 Captured entries include line and version information. You can revisit the latest 20 lines, while edited entries are kept separately. Suggestions for English, Simplified Chinese, and Traditional Chinese are all welcome.
 
-[**Read the tutorial**](docs/dialogue-review.en.md) · [**Submit a suggestion**](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new?template=translation.yml)
+[**Read the tutorial**](docs/dialogue-review.en.md) · [**Submit a suggestion**](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues/new?template=translation.yml)
 
 > **Export before closing.** Review records last only for the current window session. Suggestions do not immediately change the game or upload themselves. Some lines cannot yet be located; screenshots and context are welcome too.
 
@@ -71,7 +71,7 @@ The English translation was produced with AI assistance from the established Sim
 
 The cinematic completion statement covers the three specified clips. Original artistic lettering and other unlisted clips are outside that claim. Resource reconstruction has been checked for all three languages; English and Traditional Chinese in-game video playback and layout still need player feedback.
 
-Please [report problems](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues) with the tool version, game build, scene, reproduction steps, and a screenshot. Include surrounding dialogue for translation issues. Do not upload full game resources, saves, account information, or logs containing personal paths.
+Please [report problems](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues) with the tool version, game build, scene, reproduction steps, and a screenshot. Include surrounding dialogue for translation issues. Do not upload full game resources, saves, account information, or logs containing personal paths.
 
 <details>
 <summary><strong>Updates, disk space, and installation issues</strong></summary>

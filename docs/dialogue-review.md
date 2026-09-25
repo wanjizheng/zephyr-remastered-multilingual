@@ -1,6 +1,6 @@
 # 边玩边校对：让每一句对白更好
 
-[English tutorial](dialogue-review.en.md) · [返回首页](../README.md) · [下载最新版](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/latest)
+[English tutorial](dialogue-review.en.md) · [返回首页](../README.md) · [下载最新版](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest)
 
 一句更自然的对白、一个说得通的称呼、一处错字，都能让下一位玩家的冒险更顺畅。无需编程，也不必承担整章翻译；你可以只贡献自己在游玩中发现的一句话。简体、繁体和英文建议都欢迎。
 
@@ -34,7 +34,7 @@ CN、TW、EN 决定校对的目标语言。顶部“游戏实况”是游戏正�
 
 ## 5. 分享给社区
 
-点击“预览提交”，检查内容，再点击“复制并打开 GitHub”。在网页中选择翻译校对建议，粘贴正文，附上刚导出的 ZIP，然后自行提交。也可以直接打开[翻译建议表单](https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new?template=translation.yml)。GitHub 提交需要账号；本地使用和导出不需要。
+点击“预览提交”，检查内容，再点击“复制并打开 GitHub”。在网页中选择翻译校对建议，粘贴正文，附上刚导出的 ZIP，然后自行提交。也可以直接打开[翻译建议表单](https://github.com/wanjizheng/zephyr-remastered-multilingual/issues/new?template=translation.yml)。GitHub 提交需要账号；本地使用和导出不需要。
 
 可以按同一场景或同一类问题整理一批建议。先看看已有 Issues，重复问题可以在原讨论中补充。愿意的话写上希望使用的署名。我们欢迎讨论不同表达；最终是否采用，以原意、上下文、人物语气和全篇一致性为依据。
 

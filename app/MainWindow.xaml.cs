@@ -222,7 +222,7 @@ public partial class MainWindow : Window
   try{proofreader=new Dialogue.DialogueWindow(GamePath.Text,language:AppLanguage);proofreader.Closed+=(_,_)=>proofreader=null;proofreader.Show();}
   catch(Exception ex){MessageBox.Show(this,ex.Message,"校对窗口未能打开");}
  }
- void FeedbackClick(object sender,RoutedEventArgs e)=>Open("https://github.com/wanjizheng/zephyr-remastered-zh-cn/issues/new/choose");
+ void FeedbackClick(object sender,RoutedEventArgs e)=>Open("https://github.com/wanjizheng/zephyr-remastered-multilingual/issues/new/choose");
  async Task CheckUpdates(bool manual)
  {
   if(preview)return;UpdateButton.IsEnabled=false;
