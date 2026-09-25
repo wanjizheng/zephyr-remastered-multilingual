@@ -6,7 +6,7 @@ A more natural line, a clearer form of address, or a single corrected typo can m
 
 ## 1. Open Dialogue review
 
-Extract the complete v0.4.4 ZIP and run `ZephyrChinesePatcher.exe`. Select the game folder and CN, TW, or EN in the patcher, then click **Dialogue review**. You can review dialogue with the game running. Installing a patch or changing the game's language still requires you to exit the game first.
+Extract the complete latest-release ZIP and run `ZephyrChinesePatcher.exe`. Select the game folder and CN, TW, or EN in the patcher, then click **Dialogue review**. You can review dialogue with the game running. Installing a patch or changing the game's language still requires you to exit the game first.
 
 CN, TW, and EN select the language you want to review. **Live game** shows text captured from the running game; **Language-pack text** shows the text from your selected translation pack. If they use different languages, check which translation you intend to edit.
 

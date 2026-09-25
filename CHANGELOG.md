@@ -1,5 +1,16 @@
 # 更新日志 / Changelog
 
+## [0.5.3] - 2026-09-25
+
+- 三个主要关键剧情动画的嵌入文字完成三语处理：地图与战况、战术说明字幕、滚动演说；英文原片已有英文的地图片段保留原文。
+- 修复通关后再次开始新游戏时的韩文提示与按钮，覆盖简体、繁体和英文。
+- 汇总 v0.4.4 之后的对白、物品、技能与人物名字栏修订，以及演说动画播放兼容性调整。
+- 保留三语对白校对；重新整理项目首页，加入真实动画截帧、独立繁体及英文说明。
+- Three key story cinematics now have embedded-text coverage across CN/TW/EN; fixed post-completion New Game prompts and included accumulated translation, name-display, and video compatibility updates.
+- 三语离线重建及发行签名通过；简体演说动画播放获实机确认，其他语言播放和二周目窗口仍待实机反馈。
+
+[下载 v0.5.3](https://github.com/wanjizheng/zephyr-remastered-zh-cn/releases/tag/v0.5.3) · [完整中英双语说明 / Full release notes](changelogs/v0.5.3.md)
+
 ## [0.4.7] - 2026-09-24（本地构建，未发布）
 
 - 接入 060、083、109 的简繁视频和 083、109 英文视频；060 英文保留原片。
