@@ -7,6 +7,7 @@ from patch_data import apply_ops,texture_pixels
 from catalog import Catalog
 from video_resources import rebuild_videos
 from speaker_alias import add_unit_aliases,add_sprite_aliases,add_catalog_aliases
+from font_alias import add_font_aliases
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def safe(root,relative):
  root=Path(root).resolve();path=(root/relative).resolve()
@@ -54,6 +55,7 @@ def rebuild(original,out,patch,payload,verify_output=True):
   print('%s %d/%d'%(progress_label,i+1,len(patch['files'])),file=sys.stderr,flush=True)
   if item['kind']=='unity':
    env=UnityPy.load(str(src));objects={(o.assets_file.name,o.path_id):o for o in env.objects}
+   add_font_aliases(env,item.get('font_aliases',[]),payload)
    for edit in item['changes']:
     obj=objects[(edit['sf'],edit['pid'])]
     if hashlib.sha256(obj.get_raw_data()).hexdigest()!=edit['before_raw_sha256']:raise ValueError('资源对象版本不匹配')

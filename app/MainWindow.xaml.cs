@@ -62,7 +62,7 @@ public partial class MainWindow : Window
  {
   preview=true;GamePath.Text=@"D:\Games\Steam\steamapps\common\The Rhapsody of Zephyr Remastered";
   var previewState=state=="install-progress"?"original":state;
-  using var doc=JsonDocument.Parse(JsonSerializer.Serialize(new{status=previewState,can_install=previewState=="original",backup_available=true,backup_files=19,backup_complete=true,game_build="25418345",installed_build=previewState=="unsupported_or_modified"?"25420000":"25418345",version=Updates.Current,installed_version=previewState=="installed"?Updates.Current:null}));
+  using var doc=JsonDocument.Parse(JsonSerializer.Serialize(new{status=previewState,can_install=previewState=="original",backup_available=true,backup_files=19,backup_complete=true,game_build="25674418",installed_build=previewState=="unsupported_or_modified"?"25420000":"25674418",version=Updates.Current,installed_version=previewState=="installed"?Updates.Current:null}));
   ShowState(doc.RootElement.Clone());
   if(state=="steam-waiting"){BeginSteamWatch();steamTimer.Stop();}
   if(state=="install-progress"){Progress.Visibility=Visibility.Visible;Progress.IsIndeterminate=false;Progress.Maximum=19;Progress.Value=5;FeatureRow.Visibility=Visibility.Collapsed;ProgressText.Text=AppLanguage=="en"?"Preparing resources 5/19":AppLanguage=="zh-Hant"?"正在準備資源 5/19":"正在准备资源 5/19";}
@@ -178,7 +178,7 @@ public partial class MainWindow : Window
   MainHeading.Text=english?"Return to a familiar world":hant?"中文，回到熟悉的世界":"中文，回到熟悉的世界";
   MainSubheading.Text=english?"Select the game folder to install the patch.":hant?"選擇遊戲目錄，即可安裝漢化。":"选择游戏目录，即可安装汉化。";
   SidebarEdition.Text=english?"Remastered localization patch":hant?"重製版多語言翻譯":"重制版多语言翻译";
-  VersionBadge.Text=english?"v0.5.3":hant?"v0.5.3":"v0.5.3";
+  VersionBadge.Text=english?"v0.5.5":hant?"v0.5.5":"v0.5.5";
   GameDirectoryLabel.Text=english?"Game folder":hant?"遊戲目錄":"游戏目录";
   LanguageIconLabel.Text=english?"Install language":hant?"安裝語言":"安装语言";
   GamePath.ToolTip=english?"Select the folder containing ZephyrRemastered.exe":hant?"選擇包含 ZephyrRemastered.exe 的資料夾":"选择包含 ZephyrRemastered.exe 的文件夹";
@@ -189,7 +189,7 @@ public partial class MainWindow : Window
   FeedbackButton.Content=english?"Feedback":hant?"問題回報":"问题反馈";
   StoreButton.Content=english?"Support the official game":hant?"支持正版":"支持正版";
   RecoverButton.Content=english?"Repair interrupted install":hant?"修復中斷的安裝":"修复中断的安装";
-  FooterVersion.Text=english?"v0.5.3 · Unofficial localization tool":hant?"v0.5.3 · 非官方漢化工具":"v0.5.3 · 非官方汉化工具";
+  FooterVersion.Text=english?"v0.5.5 · Unofficial localization tool":hant?"v0.5.5 · 非官方漢化工具":"v0.5.5 · 非官方汉化工具";
   UpdateInstallButtonText();
   if(lastState is JsonElement current)ShowState(current);
   else{StateTitle.Text=L("等待选择游戏目录");StateDetail.Text=L("请选择包含 ZephyrRemastered.exe 的文件夹。");}

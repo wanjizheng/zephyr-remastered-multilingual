@@ -3,7 +3,7 @@ import argparse,contextlib,gzip,hashlib,json,os,re,shutil,subprocess,sys,uuid
 from pathlib import Path
 from resources import rebuild,safe,sha
 from trusted_payload import PAYLOADS
-VERSION='0.5.3'
+VERSION='0.5.5'
 WORK_DIRS={'backup':'b','staging':'s','rollback':'t','verification':'v'}
 def workdir(home,kind,token=None):
  if token is not None:return home/WORK_DIRS[kind]/token
@@ -143,6 +143,19 @@ class Patcher:
    state=self.status()
    if state['status']=='installed':return state
    if state['status'] not in ['original','update_available']:raise ValueError('当前文件不是受支持的原版或本工具管理的汉化版，请先用 Steam 验证文件。')
+   # Steam validation can restore a newer official build while the previous
+   # build's managed backup remains. Keep that backup; capture verified new originals.
+   if self.original.exists() and state['status']=='original' and any(
+    not safe(self.original,r['path']).is_file() or sha(safe(self.original,r['path']))!=r.get('before_sha256',r.get('sha256'))
+    for r in self.files+self.patch['dependencies']):
+    temporary=workdir(self.home,'backup')
+    for r in self.files+self.patch['dependencies']:
+     self.copy_checked(safe(self.game,r['path']),safe(temporary,r['path']),r.get('before_sha256',r.get('sha256')))
+    previous=workdir(self.home,'backup')
+    self.original.rename(previous)
+    try:temporary.rename(self.original)
+    except Exception:
+     previous.rename(self.original);raise
    if not self.original.exists():
     if state['status']!='original':raise ValueError('缺少原版备份，无法更新')
     temporary=workdir(self.home,'backup')
