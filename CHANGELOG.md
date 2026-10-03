@@ -1,5 +1,19 @@
 # 更新日志 / Changelog
 
+## [0.5.5] - 2026-10-03
+
+**已支持 2026 年 10 月 3 日最新游戏更新：Steam Build 25674418。三语同步适配。**
+
+- 重新构建新版资源，解决旧补丁导致的 NOW LOADING 卡住及安装器拒绝新版游戏的问题。
+- 新增选项与文字：主线任务筛选、五档遭遇频率、无视弹药消耗、XP 获取倍率、装备分类、存档与 Steam 提示；同步说明换行与繁体字形。
+- 汇总此前英文译文修订，保留 Libre Baskerville 对话字体、Inter 界面字体及日记、姓名、窄按钮排版修复。
+- 保留官方新增快捷操作、战斗逻辑、特效、语音音量和 UI 调整；改善旧备份升级及游戏版本校验。
+- 发布维护者已确认验证的签名 v0.5.5 安装包。旧补丁残留时，先在 Steam 验证文件完整性，再安装本版。
+- Now supports the latest October 3, 2026 game update (Steam Build 25674418) in CN/TW/EN, with the new options localized and previous English fixes retained.
+
+[下载 v0.5.5](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/tag/v0.5.5) · [完整更新说明 / Full release notes](changelogs/v0.5.5.md)
+
+
 ## [0.5.4] - 2026-10-03（本地适配，未发布）
 
 - 为 Steam build 25674418 重新构建简体、繁体、英文补丁，迁移新版资源包、对象校验和游戏程序内文字位置。

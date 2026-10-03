@@ -12,6 +12,17 @@ Simplified Chinese · Traditional Chinese · English
 
 </div>
 
+## v0.5.5 · Supports the latest October 3, 2026 game update
+
+**Updated for the latest Steam game version released today, October 3, 2026: Build 25674418. Simplified Chinese, Traditional Chinese, and English are all supported.**
+
+This release rebuilds the language packs for the new game resources and addresses incompatibility with the old patch. It localizes the new main-quest filter, five encounter-frequency settings, Ignore Ammo Consumption, XP gain multipliers, and equipment categories. Previous English translation, font, and layout fixes are retained, along with the official game update's new features and fixes.
+
+**If the old patch remains after the game update, exit the game and verify its files in Steam before installing v0.5.5. Launch through your Steam library after installation.**
+
+[Download v0.5.5](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/tag/v0.5.5) · [Release notes](changelogs/v0.5.5.md) · [Changelog](CHANGELOG.md)
+
+
 ## A note from the creator
 
 I loved the original Rhapsody of Zephyr growing up. The 1998 game and the old Chinese edition left me with memories I wanted to revisit in the remaster—and share with more players.
@@ -26,7 +37,7 @@ This project started as a fresh Chinese translation based on the remaster's Kore
 
 <sub>A frame extracted from the video used in this release. Contains a brief story scene. [See the other examples](README.md#关键动画也能读懂了).</sub>
 
-This release also includes:
+The following v0.5.3 improvements are retained:
 
 - Localized prompts and Yes/No buttons when starting a new game after completing a playthrough, in all three languages.
 - Accumulated dialogue, item, skill, and character-name display corrections since the previous public release.
@@ -37,7 +48,7 @@ This release also includes:
 
 ## Get started
 
-You need **Windows 10 or 11, x64**, and a legally installed Steam copy of the game. This release targets Steam App **5099430**, Build **25418345**; the patcher checks the supported resource hashes.
+You need **Windows 10 or 11, x64**, and a legally installed Steam copy of the game. This release targets Steam App **5099430**, Build **25674418**; the patcher checks the supported resource hashes.
 
 1. Download **`Zephyr-Chinese-Patcher-*.zip`** from the [latest release](https://github.com/wanjizheng/zephyr-remastered-multilingual/releases/latest). Choose the installer ZIP rather than GitHub's “Source code” archives.
 2. Extract the entire ZIP and run `ZephyrChinesePatcher.exe`. Keep `tools`, `payload`, and the license files beside it. No separate .NET, Python, or Unity installation is needed.
